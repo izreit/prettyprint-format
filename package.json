@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "prettyprint-format",
+  "version": "0.0.1",
+  "description": "General-purpose pretty print routine modeled after Format module in O'Caml.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pretty print",
+    "format",
+	"text"
+  ],
+  "author": "kizz",
+  "license": "MIT"
+}

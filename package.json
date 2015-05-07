@@ -5,13 +5,17 @@
   "description": "General-purpose pretty print routine modeled after Format module in O'Caml.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "pretty print",
     "format",
-	"text"
+    "text"
   ],
   "author": "izreit",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4"
+  }
 }

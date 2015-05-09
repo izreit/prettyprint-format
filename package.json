@@ -5,7 +5,8 @@
   "description": "General-purpose pretty print routine modeled after Format module in O'Caml.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "makeTest": "node test-src/makeTest.js"
   },
   "keywords": [
     "pretty print",
@@ -16,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^2.3.0",
+    "ect": "^0.5.9",
     "mocha": "^2.2.4"
   }
 }

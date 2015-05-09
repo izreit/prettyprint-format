@@ -1,0 +1,19 @@
+// vim: set ts=2 sts=2 sw=2 et ai syn=javascript:
+
+var expect = require("chai").expect;
+var pp = require("../lib/");
+
+describe("printf", function () {
+
+<% for c in @testCases : %>
+  it(<%- c.name %>, function () {
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(<%- c.margin %>);
+    var formatted = ppf.printf(<%- c.source %>);
+    var expected = <%- c.expected %>;
+    expect(formatted).equal(expected);
+  });
+
+<% end %>
+});
+

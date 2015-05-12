@@ -7,8 +7,13 @@ describe("printf", function () {
 
 <% for c in @testCases : %>
   it(<%- c.name %>, function () {
+    <%- if c.comment then "// " + c.comment + "\n" else "\n" %>
+    /* 
+      <%= ("123456789012345678901234567890123456789012345678901234567890".slice 0, c.margin) + "\n" %>
+      <%- (c.rawExpected.replace /\n/g, "\n      ") + "\n" %>
+     */
     var ppf = new pp.StringFormatter();
-    ppf.setMargin(<%- c.margin %>);
+    ppf.setMargin(<%- c.margin %>, <%= c.margin - 1 %>);
     var formatted = ppf.printf(<%- c.source %>);
     var expected = <%- c.expected %>;
     expect(formatted).equal(expected);

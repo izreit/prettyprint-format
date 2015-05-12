@@ -1,10 +1,68 @@
 [
   {
-    "margin": 5,
-    "source": "@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@."
+    "margin": [5, 7, 9, 11, 13, 15, 17],
+    "source": "@[<h>aaaaa@ @[<v>[b@ c]@]@]@."
   },
   {
-    "margin": 10,
+    "comment": "aditional indent",
+    "margin": [3, 4, 5, 6, 7, 8, 9, 10],
+    "source": "@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@."
+  },
+  {
+    "margin": 5,
+    "source": "@[aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@."
+  },
+  {
+    "margin": [5, 10, 15],
+    "source": "@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box",
+    "margin": [10, 12, 14, 17, 19, 23],
+    "source": "@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 2",
+    "margin": [9, 11, 12, 13, 14, 15],
+    "source": "@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 2-A",
+    "margin": [12, 14, 15, 22],
+    "source": "@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 2-B",
+    "margin": [15, 18, 19, 20, 21],
+    "source": "@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 2-B-A",
+    "margin": [15, 18, 19, 20, 21],
+    "source": "@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 3 (the second (or later) line-break in the box has never enough room)",
+    "margin": [9, 11, 12, 13, 14, 15],
+    "source": "@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 4 (the first line-break in the box has never enough room)",
+    "margin": [6, 7, 9, 11, 12],
+    "source": "@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "hbox to box 4-A (the too narrow first line-break caused by a shrinkable box)",
+    "margin": [9, 11, 13],
+    "source": "@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
+    "comment": "box to box",
+    "margin": [13, 17, 23],
+    "source": "@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@."
+  },
+  {
+    "margin": [5, 20, 40],
     "source": "@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@."
   }
 ]

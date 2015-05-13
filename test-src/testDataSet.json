@@ -42,6 +42,11 @@
     "source": "@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@."
   },
   {
+    "comment": "hbox to box 2-B-B",
+    "margin": [15, 18, 19, 20, 21],
+    "source": "@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@."
+  },
+  {
     "comment": "hbox to box 3 (the second (or later) line-break in the box has never enough room)",
     "margin": [9, 11, 12, 13, 14, 15],
     "source": "@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@."

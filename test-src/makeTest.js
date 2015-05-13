@@ -4,6 +4,21 @@ var fs = require("fs");
 var path = require("path");
 var child_process = require("child_process");
 var ECT = require("ect");
+var program = require("commander");
+
+program
+  .version("0.0.1")
+  .option("-o, --output <filename>", "Specify the output file.")
+  .option("-i, --input <filename>", "Specify the test data set.")
+  .parse(process.argv);
+
+var dataFilePath = program.input;
+var outFilePath = program.output;
+
+if (!dataFilePath)
+  console.log("Error: no input file.");
+if (!outFilePath)
+  console.log("Error: no output file specified.");
 
 function makeAnswer(m, s) {
   s = s.replace(/([<>;])/g, function (m) { return "\\" + m; });
@@ -17,7 +32,7 @@ function makeAnswer(m, s) {
 }
 
 var renderer = ECT({ root: __dirname });
-var dataFilePath = path.join(__dirname, "testDataSet.json");
+//var dataFilePath = path.join(__dirname, "testDataSet.json");
 var content = fs.readFileSync(dataFilePath, "utf8");
 
 var testCases = [];
@@ -38,7 +53,7 @@ JSON.parse(content).forEach(function (t) {
 });
 
 var generated = renderer.render("template.ect", { testCases: testCases });
-var outFilePath = path.join(__dirname, "..", "test", "printf.spec.js");
+//var outFilePath = path.join(__dirname, "..", "test", "printf.spec.js");
 fs.writeFileSync(outFilePath, generated, "utf8");
 console.log("Done!");
 

@@ -714,6 +714,79 @@ describe("printf", function () {
     expect(formatted).equal(expected);
   });
 
+  it("15/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+    // hbox to box 2-B-B
+    /* 
+      123456789012345
+      abc [ddd
+              eeee
+          f
+          ggggggggg] h i j
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(15, 14);
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd\n        eeee\n    f\n    ggggggggg] h i j";
+    expect(formatted).equal(expected);
+  });
+
+  it("18/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+    // hbox to box 2-B-B
+    /* 
+      123456789012345678
+      abc [ddd
+              eeee
+          f ggggggggg] h i j
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(18, 17);
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd\n        eeee\n    f ggggggggg] h i j";
+    expect(formatted).equal(expected);
+  });
+
+  it("19/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+    // hbox to box 2-B-B
+    /* 
+      1234567890123456789
+      abc [ddd      eeee
+          f ggggggggg] h i j
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(19, 18);
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd      eeee\n    f ggggggggg] h i j";
+    expect(formatted).equal(expected);
+  });
+
+  it("20/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+    // hbox to box 2-B-B
+    /* 
+      12345678901234567890
+      abc [ddd      eeee
+          f ggggggggg] h i j
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(20, 19);
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd      eeee\n    f ggggggggg] h i j";
+    expect(formatted).equal(expected);
+  });
+
+  it("21/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+    // hbox to box 2-B-B
+    /* 
+      123456789012345678901
+      abc [ddd      eeee f
+          ggggggggg] h i j
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(21, 20);
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd      eeee f\n    ggggggggg] h i j";
+    expect(formatted).equal(expected);
+  });
+
   it("9/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 

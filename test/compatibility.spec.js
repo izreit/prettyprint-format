@@ -3,7 +3,7 @@
 var expect = require("chai").expect;
 var pp = require("../lib/");
 
-describe("printf", function () {
+describe("compatibility", function () {
 
   it("5/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
     

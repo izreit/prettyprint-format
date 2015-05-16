@@ -1123,5 +1123,91 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
+  it("7/@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.", function () {
+    // closing hovbox after bleed
+    /* 
+      1234567
+      aaa b
+          cccccccccc
+          zzz
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(7, 6);
+    var formatted = ppf.printf("@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.");
+    var expected = "aaa b\n    cccccccccc\n    zzz";
+    expect(formatted).equal(expected);
+  });
+
+  it("10/@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.", function () {
+    // closing hovbox after bleed
+    /* 
+      1234567890
+      aaa b
+          cccccccccc
+          zzz
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(10, 9);
+    var formatted = ppf.printf("@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.");
+    var expected = "aaa b\n    cccccccccc\n    zzz";
+    expect(formatted).equal(expected);
+  });
+
+  it("7/@[aaa @[bbbbbbbbbb@ @]ccc@]@.", function () {
+    // closing bbox after bleed
+    /* 
+      1234567
+      aaa bbbbbbbbbb
+          ccc
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(7, 6);
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]ccc@]@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc";
+    expect(formatted).equal(expected);
+  });
+
+  it("10/@[aaa @[bbbbbbbbbb@ @]ccc@]@.", function () {
+    // closing bbox after bleed
+    /* 
+      1234567890
+      aaa bbbbbbbbbb
+          ccc
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(10, 9);
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]ccc@]@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc";
+    expect(formatted).equal(expected);
+  });
+
+  it("7/@[aaa @[bbbbbbbbbb@ @]@]ccc@.", function () {
+    // closing bbox after bleed 2
+    /* 
+      1234567
+      aaa bbbbbbbbbb
+          ccc
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(7, 6);
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc";
+    expect(formatted).equal(expected);
+  });
+
+  it("10/@[aaa @[bbbbbbbbbb@ @]@]ccc@.", function () {
+    // closing bbox after bleed 2
+    /* 
+      1234567890
+      aaa bbbbbbbbbb
+          ccc
+     */
+    var ppf = new pp.StringFormatter();
+    ppf.setMargin(10, 9);
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc";
+    expect(formatted).equal(expected);
+  });
+
 });
 

@@ -69,5 +69,20 @@
   {
     "margin": [5, 20, 40],
     "source": "@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@."
+  },
+  {
+    "comment": "closing hovbox after bleed",
+    "margin": [7, 10],
+    "source": "@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@."
+  },
+  {
+    "comment": "closing bbox after bleed",
+    "margin": [7, 10],
+    "source": "@[aaa @[bbbbbbbbbb@ @]ccc@]@."
+  },
+  {
+    "comment": "closing bbox after bleed 2",
+    "margin": [7, 10],
+    "source": "@[aaa @[bbbbbbbbbb@ @]@]ccc@."
   }
 ]

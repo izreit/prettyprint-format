@@ -6,7 +6,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
-    "maketest": "node test-src/makeTest.js -o test/compatibility.spec.js -i test-src/testDataSet.json"
+    "testmake": "node test-src/makeTest.js -o test/compatibility.spec.js -i test-src/testDataSet.json",
+    "testmakerun": "npm run testmake && npm run test"
   },
   "keywords": [
     "pretty print",

@@ -12,9 +12,9 @@ describe("compatibility", function () {
       <%= ("123456789012345678901234567890123456789012345678901234567890".slice 0, c.margin) + "\n" %>
       <%- (c.rawExpected.replace /\n/g, "\n      ") + "\n" %>
      */
-    var ppf = new pp.StringFormatter();
+    var ppf = new pp.Formatter();
     ppf.setMargin(<%- c.margin %>, <%= c.margin - 1 %>);
-    var formatted = ppf.printf(<%- c.source %>);
+    var formatted = ppf.sprintf(<%- c.source %>);
     var expected = <%- c.expected %>;
     expect(formatted).equal(expected);
   });

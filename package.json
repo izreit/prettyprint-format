@@ -2,7 +2,7 @@
   "private": true,
   "name": "prettyprint-format",
   "version": "0.0.1",
-  "description": "General-purpose pretty print routine modeled after Format module in O'Caml.",
+  "description": "General-purpose pretty print routine modeled after Format module in OCaml",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",

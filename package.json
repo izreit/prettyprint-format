@@ -5,6 +5,7 @@
   "description": "General-purpose pretty print routine modeled after Format module in OCaml",
   "main": "lib/index.js",
   "scripts": {
+    "browserify": "browserify -s Format lib/index.js -o prettyprint-format.js",
     "test": "mocha",
     "testmake": "node test-src/makeTest.js -o test/compatibility.spec.js -i test-src/testDataSet.json",
     "testmakerun": "npm run testmake && npm run test"
@@ -17,6 +18,7 @@
   "author": "izreit",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^10.2.0",
     "chai": "^2.3.0",
     "commander": "^2.8.1",
     "ect": "^0.5.9",

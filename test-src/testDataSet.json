@@ -84,5 +84,15 @@
     "comment": "closing bbox after bleed 2",
     "margin": [7, 10],
     "source": "@[aaa @[bbbbbbbbbb@ @]@]ccc@."
+  },
+  {
+    "comment": "box breaking",
+    "margin": [6, 20],
+    "source": "@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@."
+  },
+  {
+    "comment": "force newline",
+    "margin": [6, 10, 20],
+    "source": "@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@."
   }
 ]

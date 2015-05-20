@@ -5,7 +5,7 @@ var pp = require("../lib/");
 
 describe("compatibility", function () {
 
-  it("5/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("5/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       12345
@@ -19,7 +19,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("7/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("7/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       1234567
@@ -33,7 +33,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("9/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("9/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       123456789
@@ -47,7 +47,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("11/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("11/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       12345678901
@@ -61,7 +61,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("13/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("13/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       1234567890123
@@ -75,7 +75,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("15/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       123456789012345
@@ -89,7 +89,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("17/@[<h>aaaaa@ @[<v>[b@ c]@]@]@.", function () {
+  it("17/\"@[<h>aaaaa@ @[<v>[b@ c]@]@]@.\"", function () {
     
     /* 
       12345678901234567
@@ -103,7 +103,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("3/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("3/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       123
@@ -119,7 +119,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("4/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("4/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       1234
@@ -135,7 +135,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("5/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("5/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       12345
@@ -151,7 +151,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("6/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("6/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       123456
@@ -167,7 +167,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("7/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("7/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       1234567
@@ -183,7 +183,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("8/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("8/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       12345678
@@ -199,7 +199,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("9/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("9/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       123456789
@@ -215,7 +215,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("10/@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.", function () {
+  it("10/\"@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.\"", function () {
     // aditional indent
     /* 
       1234567890
@@ -231,7 +231,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("5/@[aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.", function () {
+  it("5/\"@[aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.\"", function () {
     
     /* 
       12345
@@ -250,7 +250,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("5/@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("5/\"@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     
     /* 
       12345
@@ -272,7 +272,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("10/@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("10/\"@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     
     /* 
       1234567890
@@ -293,7 +293,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     
     /* 
       123456789012345
@@ -313,7 +313,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("10/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("10/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box
     /* 
       1234567890
@@ -329,7 +329,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("12/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("12/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box
     /* 
       123456789012
@@ -345,7 +345,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("14/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("14/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box
     /* 
       12345678901234
@@ -360,7 +360,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("17/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("17/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box
     /* 
       12345678901234567
@@ -375,7 +375,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("19/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("19/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box
     /* 
       1234567890123456789
@@ -389,7 +389,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("23/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("23/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box
     /* 
       12345678901234567890123
@@ -402,7 +402,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("9/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("9/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2
     /* 
       123456789
@@ -418,7 +418,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("11/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("11/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2
     /* 
       12345678901
@@ -434,7 +434,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("12/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("12/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2
     /* 
       123456789012
@@ -450,7 +450,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("13/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("13/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2
     /* 
       1234567890123
@@ -466,7 +466,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("14/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("14/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2
     /* 
       12345678901234
@@ -482,7 +482,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2
     /* 
       123456789012345
@@ -497,7 +497,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("12/@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("12/\"@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-A
     /* 
       123456789012
@@ -513,7 +513,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("14/@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("14/\"@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-A
     /* 
       12345678901234
@@ -529,7 +529,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-A
     /* 
       123456789012345
@@ -545,7 +545,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("22/@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("22/\"@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-A
     /* 
       1234567890123456789012
@@ -559,7 +559,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B
     /* 
       123456789012345
@@ -575,7 +575,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("18/@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("18/\"@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B
     /* 
       123456789012345678
@@ -591,7 +591,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("19/@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("19/\"@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B
     /* 
       1234567890123456789
@@ -607,7 +607,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("20/@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("20/\"@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B
     /* 
       12345678901234567890
@@ -623,7 +623,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("21/@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("21/\"@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B
     /* 
       123456789012345678901
@@ -638,7 +638,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-A
     /* 
       123456789012345
@@ -654,7 +654,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("18/@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("18/\"@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-A
     /* 
       123456789012345678
@@ -670,7 +670,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("19/@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("19/\"@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-A
     /* 
       1234567890123456789
@@ -685,7 +685,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("20/@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("20/\"@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-A
     /* 
       12345678901234567890
@@ -700,7 +700,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("21/@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("21/\"@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-A
     /* 
       123456789012345678901
@@ -714,7 +714,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-B
     /* 
       123456789012345
@@ -730,7 +730,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("18/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("18/\"@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-B
     /* 
       123456789012345678
@@ -745,7 +745,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("19/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("19/\"@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-B
     /* 
       1234567890123456789
@@ -759,7 +759,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("20/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("20/\"@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-B
     /* 
       12345678901234567890
@@ -773,7 +773,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("21/@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("21/\"@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 2-B-B
     /* 
       123456789012345678901
@@ -787,7 +787,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("9/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("9/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 
       123456789
@@ -803,7 +803,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("11/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("11/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 
       12345678901
@@ -819,7 +819,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("12/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("12/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 
       123456789012
@@ -835,7 +835,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("13/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("13/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 
       1234567890123
@@ -851,7 +851,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("14/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("14/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 
       12345678901234
@@ -867,7 +867,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("15/@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("15/\"@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 3 (the second (or later) line-break in the box has never enough room)
     /* 
       123456789012345
@@ -883,7 +883,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("6/@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("6/\"@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4 (the first line-break in the box has never enough room)
     /* 
       123456
@@ -899,7 +899,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("7/@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("7/\"@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4 (the first line-break in the box has never enough room)
     /* 
       1234567
@@ -915,7 +915,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("9/@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("9/\"@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4 (the first line-break in the box has never enough room)
     /* 
       123456789
@@ -931,7 +931,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("11/@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("11/\"@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4 (the first line-break in the box has never enough room)
     /* 
       12345678901
@@ -947,7 +947,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("12/@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("12/\"@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4 (the first line-break in the box has never enough room)
     /* 
       123456789012
@@ -963,7 +963,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("9/@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("9/\"@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4-A (the too narrow first line-break caused by a shrinkable box)
     /* 
       123456789
@@ -983,7 +983,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("11/@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("11/\"@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4-A (the too narrow first line-break caused by a shrinkable box)
     /* 
       12345678901
@@ -1003,7 +1003,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("13/@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.", function () {
+  it("13/\"@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.\"", function () {
     // hbox to box 4-A (the too narrow first line-break caused by a shrinkable box)
     /* 
       1234567890123
@@ -1022,7 +1022,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("13/@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("13/\"@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // box to box
     /* 
       1234567890123
@@ -1037,7 +1037,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("17/@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("17/\"@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // box to box
     /* 
       12345678901234567
@@ -1052,7 +1052,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("23/@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.", function () {
+  it("23/\"@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.\"", function () {
     // box to box
     /* 
       12345678901234567890123
@@ -1066,7 +1066,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("5/@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.", function () {
+  it("5/\"@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.\"", function () {
     
     /* 
       12345
@@ -1088,7 +1088,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("20/@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.", function () {
+  it("20/\"@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.\"", function () {
     
     /* 
       12345678901234567890
@@ -1110,7 +1110,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("40/@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.", function () {
+  it("40/\"@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.\"", function () {
     
     /* 
       1234567890123456789012345678901234567890
@@ -1123,7 +1123,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("7/@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.", function () {
+  it("7/\"@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.\"", function () {
     // closing hovbox after bleed
     /* 
       1234567
@@ -1138,7 +1138,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("10/@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.", function () {
+  it("10/\"@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.\"", function () {
     // closing hovbox after bleed
     /* 
       1234567890
@@ -1153,7 +1153,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("7/@[aaa @[bbbbbbbbbb@ @]ccc@]@.", function () {
+  it("7/\"@[aaa @[bbbbbbbbbb@ @]ccc@]@.\"", function () {
     // closing bbox after bleed
     /* 
       1234567
@@ -1167,7 +1167,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("10/@[aaa @[bbbbbbbbbb@ @]ccc@]@.", function () {
+  it("10/\"@[aaa @[bbbbbbbbbb@ @]ccc@]@.\"", function () {
     // closing bbox after bleed
     /* 
       1234567890
@@ -1181,7 +1181,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("7/@[aaa @[bbbbbbbbbb@ @]@]ccc@.", function () {
+  it("7/\"@[aaa @[bbbbbbbbbb@ @]@]ccc@.\"", function () {
     // closing bbox after bleed 2
     /* 
       1234567
@@ -1195,7 +1195,7 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
-  it("10/@[aaa @[bbbbbbbbbb@ @]@]ccc@.", function () {
+  it("10/\"@[aaa @[bbbbbbbbbb@ @]@]ccc@.\"", function () {
     // closing bbox after bleed 2
     /* 
       1234567890
@@ -1206,6 +1206,86 @@ describe("compatibility", function () {
     ppf.setMargin(10, 9);
     var formatted = ppf.sprintf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
     var expected = "aaa bbbbbbbbbb\n    ccc";
+    expect(formatted).equal(expected);
+  });
+
+  it("6/\"@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.\"", function () {
+    // box breaking
+    /* 
+      123456
+      foo
+      [aaaa
+      bbb
+      ccccc]
+      zzz
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(6, 5);
+    var formatted = ppf.sprintf("@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa\nbbb\nccccc]\nzzz";
+    expect(formatted).equal(expected);
+  });
+
+  it("20/\"@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.\"", function () {
+    // box breaking
+    /* 
+      12345678901234567890
+      foo
+      [aaaa bbb ccccc]
+      zzz
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(20, 19);
+    var formatted = ppf.sprintf("@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa bbb ccccc]\nzzz";
+    expect(formatted).equal(expected);
+  });
+
+  it("6/\"@[foo@ @[[aaaa@\\nbbb@ cccc]@]@ zzz@]@.\"", function () {
+    // force newline
+    /* 
+      123456
+      foo
+      [aaaa
+      bbb
+      cccc]
+      zzz
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(6, 5);
+    var formatted = ppf.sprintf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa\nbbb\ncccc]\nzzz";
+    expect(formatted).equal(expected);
+  });
+
+  it("10/\"@[foo@ @[[aaaa@\\nbbb@ cccc]@]@ zzz@]@.\"", function () {
+    // force newline
+    /* 
+      1234567890
+      foo
+      [aaaa
+      bbb cccc]
+      zzz
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(10, 9);
+    var formatted = ppf.sprintf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa\nbbb cccc]\nzzz";
+    expect(formatted).equal(expected);
+  });
+
+  it("20/\"@[foo@ @[[aaaa@\\nbbb@ cccc]@]@ zzz@]@.\"", function () {
+    // force newline
+    /* 
+      12345678901234567890
+      foo [aaaa
+          bbb cccc]
+      zzz
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(20, 19);
+    var formatted = ppf.sprintf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
+    var expected = "foo [aaaa\n    bbb cccc]\nzzz";
     expect(formatted).equal(expected);
   });
 

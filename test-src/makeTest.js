@@ -21,7 +21,8 @@ if (!outFilePath)
   console.log("Error: no output file specified.");
 
 function makeAnswer(m, s) {
-  s = s.replace(/([<>;])/g, function (m) { return "\\" + m; });
+  s = s.replace(/\n/g, "\\n").replace(/\\/g, "\\\\\\")
+       .replace(/([<>;])/g, function (m) { return "\\" + m; });
   var cmd = "echo open Format\\;\\; "
           +      "set_margin " + m + "\\;\\; "
           +      "set_max_indent " + (m - 1) + "\\;\\; "  // set_margin implicitly modified this value non-trivially...
@@ -32,20 +33,20 @@ function makeAnswer(m, s) {
 }
 
 var renderer = ECT({ root: __dirname });
-//var dataFilePath = path.join(__dirname, "testDataSet.json");
 var content = fs.readFileSync(dataFilePath, "utf8");
 
 var testCases = [];
 
 JSON.parse(content).forEach(function (t) {
   var margins = (typeof t.margin === "number") ? [t.margin] : t.margin;
+  var src = JSON.stringify(t.source);
   margins.forEach(function (m) {
     var ans = makeAnswer(m, t.source);
     testCases.push({
-      name: JSON.stringify((t.name ? (t.name + ":") : "") + (m + "/" + t.source)),
+      name: JSON.stringify((t.name ? (t.name + ":") : "") + (m + "/" + src)),
       comment: t.comment,
       margin: m,
-      source: JSON.stringify(t.source),
+      source: src,
       expected: JSON.stringify(ans),
       rawExpected: ans,
     });
@@ -53,7 +54,6 @@ JSON.parse(content).forEach(function (t) {
 });
 
 var generated = renderer.render("template.ect", { testCases: testCases });
-//var outFilePath = path.join(__dirname, "..", "test", "printf.spec.js");
 fs.writeFileSync(outFilePath, generated, "utf8");
 console.log("Done!");
 

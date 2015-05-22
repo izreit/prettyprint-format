@@ -4,19 +4,19 @@ prettyprint-format
 prettyprint-format is a JavaScript general-purpose pretty print library
 modeled after [OCaml](http://ocaml.org/)'s
 [Format](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Format.html) module.
-Using its extended `printf()` (or `sprintf()`) you can format your text, object or
+Using its extended `printf()`  you can format your text, object or
 any data structure you defnined with automatic line break and indentation.
 
     var Format = require("prettyprint-format");
-    Format.setMargin(25);
-    Format.printf("Text:@ @[lorem@ ipsum@ dolor@ sit@ amet,@ consectetur@ adipisicing@ elit,@ ...@]@.");
+    Format.setMargin(20);
+    Format.printf("Text:@ @[lorem@ ipsum@ dolor@ sit@ amet,@ consectetur@ ...@]@.");
 
 will print:
 
-    Text: lorem ipsum dolor
-          sit amet,
+    Text: lorem ipsum
+          dolor sit
+          amet,
           consectetur
-          adipisicing elit,
           ...
 
 Features
@@ -45,7 +45,7 @@ similar API to [Format](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Format
 module with slight changes.
 
 - Written in lowerCamelCase and object-oriented style.
-    - e.g. `Formatter` class instead of type `formatter`
+    - e.g. `Formatter` class instead of `formatter` type
     - e.g. `Formatter#openHvbox()` instead of `(pp_open_hvbox formatter ())`
 - Supports almost espace sequences for `printf()` with additional ones.
 - No rarely-used methods, no deprecated ones.
@@ -59,5 +59,23 @@ Example
 API Documentation
 -----------------
 
-(will be written.)
+This library mainly consists of the two object:
+
+ * `Format`: the library's root. Provides all public methods and classes.
+ * `Formatter`: the core class implementing pretty printing routine. Assigned to `Fromat.Formatter`.
+
+`Format` provides simple API
+
+#### Format
+
+###### Format.printf(format, ...)
+
+Format the arguments according to the given string `format` and print
+the result string by `console.log()`.
+
+###### Format.sprintf(format, ...)
+
+Same with `Format.printf()` except it does not print anything to `console`
+but returns a string containing the format result.  An alias of
+`Format.defaultFormatter.sprintf()`.
 

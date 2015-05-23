@@ -18,9 +18,9 @@ JSON.parse(content).forEach(function (t) {
     name: JSON.stringify(JSON.stringify(t)),
     expected: JSON.stringify(t[0]),
     num: t[1],
-    flags: t[2] ? JSON.stringify(t[2]) : "undefined",
-    width: t[3] ? JSON.stringify(t[3]) : "undefined",
-    prec: t[4] ? JSON.stringify(t[4]) : "undefined",
+    flags: (typeof t[2] === "string") ? JSON.stringify(t[2]) : "undefined",
+    width: (typeof t[3] === "number") ? JSON.stringify(t[3]) : "undefined",
+    prec: (typeof t[4] === "number") ? JSON.stringify(t[4]) : "undefined",
     type: JSON.stringify(t[5]),
   });
 });

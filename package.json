@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
-    "testmake": "node test-src/makeTest.js -o test/compatibility.spec.js -i test-src/testDataSet.json",
+    "testmake": "node test-src/makeTest-compat.js -o test/autogen-compat.spec.js -i test-src/dataset-compat.json",
     "testmakerun": "npm run testmake && npm run test"
   },
   "keywords": [

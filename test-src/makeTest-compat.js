@@ -56,7 +56,7 @@ JSON.parse(content).forEach(function (t) {
   });
 });
 
-var generated = renderer.render("template.ect", { testCases: testCases });
+var generated = renderer.render("template-compat.ect", { testCases: testCases });
 fs.writeFileSync(outFilePath, generated, "utf8");
 console.log("Done!");
 

@@ -7,7 +7,6 @@ var ECT = require("ect");
 var program = require("commander");
 
 program
-  .version("0.0.1")
   .option("-o, --output <filename>", "Specify the output file.")
   .option("-i, --input <filename>", "Specify the test data set.")
   .parse(process.argv);
@@ -15,17 +14,21 @@ program
 var dataFilePath = program.input;
 var outFilePath = program.output;
 
-if (!dataFilePath)
+if (!dataFilePath) {
   console.log("Error: no input file.");
-if (!outFilePath)
+  process.exit(1);
+}
+if (!outFilePath) {
   console.log("Error: no output file specified.");
+  process.exit(1);
+}
 
 function makeAnswer(m, s) {
   s = s.replace(/\n/g, "\\n").replace(/\\/g, "\\\\\\")
        .replace(/([<>;])/g, function (m) { return "\\" + m; });
   var cmd = "echo open Format\\;\\; "
           +      "set_margin " + m + "\\;\\; "
-          +      "set_max_indent " + (m - 1) + "\\;\\; "  // set_margin implicitly modified this value non-trivially...
+          +      "set_max_indent " + (m - 1) + "\\;\\; " // it is implicitly modified by set_margin.
           +      "printf \\\"" + s + "\\\" | "
           + "ocaml -stdin";
   var result = child_process.execSync(cmd).toString();
@@ -53,7 +56,7 @@ JSON.parse(content).forEach(function (t) {
   });
 });
 
-var generated = renderer.render("template.ect", { testCases: testCases });
+var generated = renderer.render("template-compat.ect", { testCases: testCases });
 fs.writeFileSync(outFilePath, generated, "utf8");
 console.log("Done!");
 

@@ -6,8 +6,10 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
-    "testmake": "node test-src/makeTest.js -o test/compatibility.spec.js -i test-src/testDataSet.json",
-    "testmakerun": "npm run testmake && npm run test"
+    "testmakerun": "npm run maketest && npm run test",
+    "maketest": "npm run _maketest-compat && npm run _maketest-n2s",
+    "_maketest-n2s": "node test-src/makeTest-numberToString.js",
+    "_maketest-compat": "node test-src/makeTest-compat.js -o test/autogen-compat.spec.js -i test-src/dataset-compat.json"
   },
   "keywords": [
     "pretty print",

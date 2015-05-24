@@ -32,7 +32,7 @@ function makeAnswer(m, s) {
           +      "printf \\\"" + s + "\\\" | "
           + "ocaml -stdin";
   var result = child_process.execSync(cmd).toString();
-  return result.substr(0, result.length - 1); // remove trailing newline.
+  return result;
 }
 
 var renderer = ECT({ root: __dirname });

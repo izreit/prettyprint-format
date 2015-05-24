@@ -11,11 +11,12 @@ describe("compatibility", function () {
       12345
       aaaaa [b
           c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(5, 4);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n    c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n    c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -25,11 +26,12 @@ describe("compatibility", function () {
       1234567
       aaaaa [b
             c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(7, 6);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n      c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n      c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -39,11 +41,12 @@ describe("compatibility", function () {
       123456789
       aaaaa [b
             c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(9, 8);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n      c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n      c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -53,11 +56,12 @@ describe("compatibility", function () {
       12345678901
       aaaaa [b
             c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(11, 10);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n      c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n      c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -67,11 +71,12 @@ describe("compatibility", function () {
       1234567890123
       aaaaa [b
             c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(13, 12);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n      c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n      c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -81,11 +86,12 @@ describe("compatibility", function () {
       123456789012345
       aaaaa [b
             c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n      c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n      c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -95,11 +101,12 @@ describe("compatibility", function () {
       12345678901234567
       aaaaa [b
             c]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(17, 16);
-    var formatted = ppf.sprintf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
-    var expected = "aaaaa [b\n      c]";
+    var formatted = ppf.printf("@[<h>aaaaa@ @[<v>[b@ c]@]@]@.");
+    var expected = "aaaaa [b\n      c]\n";
     expect(formatted).equal(expected);
   });
 
@@ -111,11 +118,12 @@ describe("compatibility", function () {
         eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(3, 2);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n  eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n  eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -127,11 +135,12 @@ describe("compatibility", function () {
          eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(4, 3);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n   eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n   eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -143,11 +152,12 @@ describe("compatibility", function () {
           eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(5, 4);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n    eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n    eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -159,11 +169,12 @@ describe("compatibility", function () {
           eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(6, 5);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n    eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n    eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -175,11 +186,12 @@ describe("compatibility", function () {
           eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(7, 6);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n    eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n    eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -191,11 +203,12 @@ describe("compatibility", function () {
           eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(8, 7);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n    eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n    eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -207,11 +220,12 @@ describe("compatibility", function () {
           eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(9, 8);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n    eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n    eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -223,11 +237,12 @@ describe("compatibility", function () {
           eeee
       f
       ggggggggg]
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
-    var expected = "[ddd\n    eeee\nf\nggggggggg]";
+    var formatted = ppf.printf("@[[ddd@;<2 4>eeee@ f@ ggggggggg]@]@.");
+    var expected = "[ddd\n    eeee\nf\nggggggggg]\n";
     expect(formatted).equal(expected);
   });
 
@@ -242,11 +257,12 @@ describe("compatibility", function () {
       f gg
       h i
       j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(5, 4);
-    var formatted = ppf.sprintf("@[aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
-    var expected = "aa\nbb c\ndddd\neeee\nf gg\nh i\nj";
+    var formatted = ppf.printf("@[aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
+    var expected = "aa\nbb c\ndddd\neeee\nf gg\nh i\nj\n";
     expect(formatted).equal(expected);
   });
 
@@ -264,11 +280,12 @@ describe("compatibility", function () {
        h
        i
        j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(5, 4);
-    var formatted = ppf.sprintf("@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa\n bb\n c\n [ddd\n eeee\n f\n g]\n h\n i\n j";
+    var formatted = ppf.printf("@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa\n bb\n c\n [ddd\n eeee\n f\n g]\n h\n i\n j\n";
     expect(formatted).equal(expected);
   });
 
@@ -285,11 +302,12 @@ describe("compatibility", function () {
        h
        i
        j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa\n bb\n c\n [ddd\n eeee f\n g]\n h\n i\n j";
+    var formatted = ppf.printf("@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa\n bb\n c\n [ddd\n eeee f\n g]\n h\n i\n j\n";
     expect(formatted).equal(expected);
   });
 
@@ -305,11 +323,12 @@ describe("compatibility", function () {
        h
        i
        j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa\n bb\n c\n [ddd eeee f\n g]\n h\n i\n j";
+    var formatted = ppf.printf("@[<hv 1>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa\n bb\n c\n [ddd eeee f\n g]\n h\n i\n j\n";
     expect(formatted).equal(expected);
   });
 
@@ -321,11 +340,12 @@ describe("compatibility", function () {
               eeee
               f
               g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        g] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        g] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -337,11 +357,12 @@ describe("compatibility", function () {
               eeee
               f
               g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(12, 11);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        g] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        g] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -352,11 +373,12 @@ describe("compatibility", function () {
       aa bb c [ddd
               eeee
               f g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(14, 13);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f g] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f g] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -367,11 +389,12 @@ describe("compatibility", function () {
       aa bb c [ddd
               eeee f
               g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(17, 16);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee f\n        g] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee f\n        g] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -381,11 +404,12 @@ describe("compatibility", function () {
       1234567890123456789
       aa bb c [ddd eeee
               f g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(19, 18);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd eeee\n        f g] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd eeee\n        f g] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -394,11 +418,12 @@ describe("compatibility", function () {
     /* 
       12345678901234567890123
       aa bb c [ddd eeee f g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(23, 22);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd eeee f g] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd eeee f g] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -410,11 +435,12 @@ describe("compatibility", function () {
               eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(9, 8);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -426,11 +452,12 @@ describe("compatibility", function () {
               eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(11, 10);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -442,11 +469,12 @@ describe("compatibility", function () {
               eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(12, 11);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -458,11 +486,12 @@ describe("compatibility", function () {
               eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(13, 12);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -474,11 +503,12 @@ describe("compatibility", function () {
               eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(14, 13);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -489,11 +519,12 @@ describe("compatibility", function () {
       aa bb c [ddd
               eeee f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -505,11 +536,12 @@ describe("compatibility", function () {
                eeee
                f
                ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(12, 11);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n         eeee\n         f\n         ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n         eeee\n         f\n         ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -521,11 +553,12 @@ describe("compatibility", function () {
                eeee
                f
                ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(14, 13);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n         eeee\n         f\n         ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n         eeee\n         f\n         ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -537,11 +570,12 @@ describe("compatibility", function () {
                eeee
                f
                ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n         eeee\n         f\n         ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n         eeee\n         f\n         ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -551,11 +585,12 @@ describe("compatibility", function () {
       1234567890123456789012
       aa bb c [ddd eeee f
                ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(22, 21);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd eeee f\n         ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[<1>[ddd@ eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd eeee f\n         ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -567,11 +602,12 @@ describe("compatibility", function () {
                  eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -583,11 +619,12 @@ describe("compatibility", function () {
                  eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(18, 17);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -599,11 +636,12 @@ describe("compatibility", function () {
                  eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(19, 18);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -615,11 +653,12 @@ describe("compatibility", function () {
                  eeee
               f
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(20, 19);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n           eeee\n        f\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -630,11 +669,12 @@ describe("compatibility", function () {
       aa bb c [ddd
                  eeee
               f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(21, 20);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n           eeee\n        f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n           eeee\n        f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -646,11 +686,12 @@ describe("compatibility", function () {
                eeee
             f
             ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "a b c [ddd\n         eeee\n      f\n      ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "a b c [ddd\n         eeee\n      f\n      ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -662,11 +703,12 @@ describe("compatibility", function () {
                eeee
             f
             ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(18, 17);
-    var formatted = ppf.sprintf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "a b c [ddd\n         eeee\n      f\n      ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "a b c [ddd\n         eeee\n      f\n      ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -677,11 +719,12 @@ describe("compatibility", function () {
       a b c [ddd
                eeee
             f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(19, 18);
-    var formatted = ppf.sprintf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "a b c [ddd\n         eeee\n      f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "a b c [ddd\n         eeee\n      f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -692,11 +735,12 @@ describe("compatibility", function () {
       a b c [ddd
                eeee
             f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(20, 19);
-    var formatted = ppf.sprintf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "a b c [ddd\n         eeee\n      f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "a b c [ddd\n         eeee\n      f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -706,11 +750,12 @@ describe("compatibility", function () {
       123456789012345678901
       a b c [ddd      eeee
             f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(21, 20);
-    var formatted = ppf.sprintf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "a b c [ddd      eeee\n      f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>a@ b@ c@ @[[ddd@;<6 3>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "a b c [ddd      eeee\n      f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -722,11 +767,12 @@ describe("compatibility", function () {
               eeee
           f
           ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "abc [ddd\n        eeee\n    f\n    ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd\n        eeee\n    f\n    ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -737,11 +783,12 @@ describe("compatibility", function () {
       abc [ddd
               eeee
           f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(18, 17);
-    var formatted = ppf.sprintf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "abc [ddd\n        eeee\n    f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd\n        eeee\n    f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -751,11 +798,12 @@ describe("compatibility", function () {
       1234567890123456789
       abc [ddd      eeee
           f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(19, 18);
-    var formatted = ppf.sprintf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "abc [ddd      eeee\n    f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd      eeee\n    f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -765,11 +813,12 @@ describe("compatibility", function () {
       12345678901234567890
       abc [ddd      eeee
           f ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(20, 19);
-    var formatted = ppf.sprintf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "abc [ddd      eeee\n    f ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd      eeee\n    f ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -779,11 +828,12 @@ describe("compatibility", function () {
       123456789012345678901
       abc [ddd      eeee f
           ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(21, 20);
-    var formatted = ppf.sprintf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "abc [ddd      eeee f\n    ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>abc@ @[[ddd@;<6 4>eeee@ f@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "abc [ddd      eeee f\n    ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -795,11 +845,12 @@ describe("compatibility", function () {
               eeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(9, 8);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -811,11 +862,12 @@ describe("compatibility", function () {
               eeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(11, 10);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -827,11 +879,12 @@ describe("compatibility", function () {
               eeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(12, 11);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -843,11 +896,12 @@ describe("compatibility", function () {
               eeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(13, 12);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -859,11 +913,12 @@ describe("compatibility", function () {
               eeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(14, 13);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -875,11 +930,12 @@ describe("compatibility", function () {
               eeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(15, 14);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -891,11 +947,12 @@ describe("compatibility", function () {
            eeeeeeeeeeeeeeeeeeeeeeeee
            ff
            ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(6, 5);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n     eeeeeeeeeeeeeeeeeeeeeeeee\n     ff\n     ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n     eeeeeeeeeeeeeeeeeeeeeeeee\n     ff\n     ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -907,11 +964,12 @@ describe("compatibility", function () {
             eeeeeeeeeeeeeeeeeeeeeeeee
             ff
             ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(7, 6);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n      eeeeeeeeeeeeeeeeeeeeeeeee\n      ff\n      ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n      eeeeeeeeeeeeeeeeeeeeeeeee\n      ff\n      ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -923,11 +981,12 @@ describe("compatibility", function () {
               eeeeeeeeeeeeeeeeeeeeeeeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(9, 8);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeeeeeeeeeeeeeeeeeeeeeeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeeeeeeeeeeeeeeeeeeeeeeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -939,11 +998,12 @@ describe("compatibility", function () {
               eeeeeeeeeeeeeeeeeeeeeeeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(11, 10);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeeeeeeeeeeeeeeeeeeeeeeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeeeeeeeeeeeeeeeeeeeeeeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -955,11 +1015,12 @@ describe("compatibility", function () {
               eeeeeeeeeeeeeeeeeeeeeeeee
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(12, 11);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        eeeeeeeeeeeeeeeeeeeeeeeee\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ eeeeeeeeeeeeeeeeeeeeeeeee@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        eeeeeeeeeeeeeeeeeeeeeeeee\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -975,11 +1036,12 @@ describe("compatibility", function () {
               ee]
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(9, 8);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        [ee\n        ee\n        e\n        ee\n        ee]\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        [ee\n        ee\n        e\n        ee\n        ee]\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -995,11 +1057,12 @@ describe("compatibility", function () {
               ee]
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(11, 10);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        [ee\n        ee\n        e\n        ee\n        ee]\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        [ee\n        ee\n        e\n        ee\n        ee]\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -1014,11 +1077,12 @@ describe("compatibility", function () {
               ee]
               ff
               ggggggggg] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(13, 12);
-    var formatted = ppf.sprintf("@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd\n        [ee\n        ee e\n        ee\n        ee]\n        ff\n        ggggggggg] h i j";
+    var formatted = ppf.printf("@[<h>aa@ bb@ c@ @[[ddd@ @[[ee@ ee@ e@ ee@ ee]@]@ ff@ ggggggggg]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd\n        [ee\n        ee e\n        ee\n        ee]\n        ff\n        ggggggggg] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -1029,11 +1093,12 @@ describe("compatibility", function () {
       aa bb c
       [ddd eeee f
       g] h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(13, 12);
-    var formatted = ppf.sprintf("@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c\n[ddd eeee f\ng] h i j";
+    var formatted = ppf.printf("@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c\n[ddd eeee f\ng] h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -1044,11 +1109,12 @@ describe("compatibility", function () {
       aa bb c
       [ddd eeee f g] h
       i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(17, 16);
-    var formatted = ppf.sprintf("@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c\n[ddd eeee f g] h\ni j";
+    var formatted = ppf.printf("@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c\n[ddd eeee f g] h\ni j\n";
     expect(formatted).equal(expected);
   });
 
@@ -1058,11 +1124,12 @@ describe("compatibility", function () {
       12345678901234567890123
       aa bb c [ddd eeee f g]
       h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(23, 22);
-    var formatted = ppf.sprintf("@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
-    var expected = "aa bb c [ddd eeee f g]\nh i j";
+    var formatted = ppf.printf("@[aa@ bb@ c@ @[[ddd@ eeee@ f@ g]@]@ h@ i@ j@]@.");
+    var expected = "aa bb c [ddd eeee f g]\nh i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -1080,11 +1147,12 @@ describe("compatibility", function () {
       h
       i
       j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(5, 4);
-    var formatted = ppf.sprintf("@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
-    var expected = "aa\nbb\nc\ndddd\neeee\nf\ngg\nh\ni\nj";
+    var formatted = ppf.printf("@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
+    var expected = "aa\nbb\nc\ndddd\neeee\nf\ngg\nh\ni\nj\n";
     expect(formatted).equal(expected);
   });
 
@@ -1102,11 +1170,12 @@ describe("compatibility", function () {
       h
       i
       j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(20, 19);
-    var formatted = ppf.sprintf("@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
-    var expected = "aa\nbb\nc\ndddd\neeee\nf\ngg\nh\ni\nj";
+    var formatted = ppf.printf("@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
+    var expected = "aa\nbb\nc\ndddd\neeee\nf\ngg\nh\ni\nj\n";
     expect(formatted).equal(expected);
   });
 
@@ -1115,11 +1184,12 @@ describe("compatibility", function () {
     /* 
       1234567890123456789012345678901234567890
       aa bb c dddd eeee f gg h i j
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(40, 39);
-    var formatted = ppf.sprintf("@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
-    var expected = "aa bb c dddd eeee f gg h i j";
+    var formatted = ppf.printf("@[<hv>aa@ bb@ c@ dddd@ eeee@ f@ gg@ h@ i@ j@]@.");
+    var expected = "aa bb c dddd eeee f gg h i j\n";
     expect(formatted).equal(expected);
   });
 
@@ -1130,11 +1200,12 @@ describe("compatibility", function () {
       aaa b
           cccccccccc
           zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(7, 6);
-    var formatted = ppf.sprintf("@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.");
-    var expected = "aaa b\n    cccccccccc\n    zzz";
+    var formatted = ppf.printf("@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.");
+    var expected = "aaa b\n    cccccccccc\n    zzz\n";
     expect(formatted).equal(expected);
   });
 
@@ -1145,11 +1216,12 @@ describe("compatibility", function () {
       aaa b
           cccccccccc
           zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.");
-    var expected = "aaa b\n    cccccccccc\n    zzz";
+    var formatted = ppf.printf("@[aaa @[<hov>b@ cccccccccc@ @]zzz@]@.");
+    var expected = "aaa b\n    cccccccccc\n    zzz\n";
     expect(formatted).equal(expected);
   });
 
@@ -1159,11 +1231,12 @@ describe("compatibility", function () {
       1234567
       aaa bbbbbbbbbb
           ccc
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(7, 6);
-    var formatted = ppf.sprintf("@[aaa @[bbbbbbbbbb@ @]ccc@]@.");
-    var expected = "aaa bbbbbbbbbb\n    ccc";
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]ccc@]@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc\n";
     expect(formatted).equal(expected);
   });
 
@@ -1173,11 +1246,12 @@ describe("compatibility", function () {
       1234567890
       aaa bbbbbbbbbb
           ccc
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[aaa @[bbbbbbbbbb@ @]ccc@]@.");
-    var expected = "aaa bbbbbbbbbb\n    ccc";
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]ccc@]@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc\n";
     expect(formatted).equal(expected);
   });
 
@@ -1187,11 +1261,12 @@ describe("compatibility", function () {
       1234567
       aaa bbbbbbbbbb
           ccc
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(7, 6);
-    var formatted = ppf.sprintf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
-    var expected = "aaa bbbbbbbbbb\n    ccc";
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc\n";
     expect(formatted).equal(expected);
   });
 
@@ -1201,11 +1276,12 @@ describe("compatibility", function () {
       1234567890
       aaa bbbbbbbbbb
           ccc
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
-    var expected = "aaa bbbbbbbbbb\n    ccc";
+    var formatted = ppf.printf("@[aaa @[bbbbbbbbbb@ @]@]ccc@.");
+    var expected = "aaa bbbbbbbbbb\n    ccc\n";
     expect(formatted).equal(expected);
   });
 
@@ -1218,11 +1294,12 @@ describe("compatibility", function () {
       bbb
       ccccc]
       zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(6, 5);
-    var formatted = ppf.sprintf("@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.");
-    var expected = "foo\n[aaaa\nbbb\nccccc]\nzzz";
+    var formatted = ppf.printf("@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa\nbbb\nccccc]\nzzz\n";
     expect(formatted).equal(expected);
   });
 
@@ -1233,11 +1310,12 @@ describe("compatibility", function () {
       foo
       [aaaa bbb ccccc]
       zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(20, 19);
-    var formatted = ppf.sprintf("@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.");
-    var expected = "foo\n[aaaa bbb ccccc]\nzzz";
+    var formatted = ppf.printf("@[foo@ @[[aaaa@ bbb@ ccccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa bbb ccccc]\nzzz\n";
     expect(formatted).equal(expected);
   });
 
@@ -1250,11 +1328,12 @@ describe("compatibility", function () {
       bbb
       cccc]
       zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(6, 5);
-    var formatted = ppf.sprintf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
-    var expected = "foo\n[aaaa\nbbb\ncccc]\nzzz";
+    var formatted = ppf.printf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa\nbbb\ncccc]\nzzz\n";
     expect(formatted).equal(expected);
   });
 
@@ -1266,11 +1345,12 @@ describe("compatibility", function () {
       [aaaa
       bbb cccc]
       zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(10, 9);
-    var formatted = ppf.sprintf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
-    var expected = "foo\n[aaaa\nbbb cccc]\nzzz";
+    var formatted = ppf.printf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
+    var expected = "foo\n[aaaa\nbbb cccc]\nzzz\n";
     expect(formatted).equal(expected);
   });
 
@@ -1281,11 +1361,12 @@ describe("compatibility", function () {
       foo [aaaa
           bbb cccc]
       zzz
+      
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(20, 19);
-    var formatted = ppf.sprintf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
-    var expected = "foo [aaaa\n    bbb cccc]\nzzz";
+    var formatted = ppf.printf("@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@.");
+    var expected = "foo [aaaa\n    bbb cccc]\nzzz\n";
     expect(formatted).equal(expected);
   });
 

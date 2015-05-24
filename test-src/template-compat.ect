@@ -14,7 +14,7 @@ describe("compatibility", function () {
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(<%- c.margin %>, <%= c.margin - 1 %>);
-    var formatted = ppf.sprintf(<%- c.source %>);
+    var formatted = ppf.printf(<%- c.source %>);
     var expected = <%- c.expected %>;
     expect(formatted).equal(expected);
   });

@@ -64,4 +64,16 @@ describe("general", function () {
     expect(lastFinished).to.equal(a);
   });
 
+  it("treats break hints", function () {
+    var mgn = pp.getStrMargin(), mi = pp.getStrMaxIndent();
+    try {
+      pp.setStrMargin(20, 19);
+      var s = pp.sprintf("@[foo@;bar@]@?");
+      var a = "foo bar";
+      expect(s).to.equal(a);
+    } finally {
+      pp.setStrMargin(mgn, mi);
+    }
+  });
+
 });

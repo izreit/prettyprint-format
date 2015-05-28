@@ -1,7 +1,7 @@
 // vim: set ts=2 sts=2 sw=2 et ai si:
 
 var expect = require("chai").expect;
-var pp = require("../lib/");
+var pp = require("../");
 
 describe("general", function () {
 

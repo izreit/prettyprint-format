@@ -1,7 +1,7 @@
 prettyprint-format
 ==================
 
-prettyprint-format is a JavaScript general-purpose pretty print library
+prettyprint-format is a JavaScript general-purpose pretty-printing library
 modeled after [OCaml](http://ocaml.org/)'s
 [Format](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Format.html) module.
 Using its extended `printf()` you can format your text, object or
@@ -24,7 +24,7 @@ Features
 
 - Automatic line break and indentation
 - Highly customizable output
-- User-defined pretty printer
+- User-defined pretty-printer
 - No dependencies
 - Bonus: JSON.stringify()-like object dumper, more condensed and readable
 
@@ -68,7 +68,8 @@ API Documentation
 This library mainly consists of the two parts:
 
  * `Format`: the library's root.  Provides all public methods and classes.
- * `Formatter`: the core class implementing pretty print routine.  Assigned to `Fromat.Formatter`.
+ * `Formatter`: the core class implementing pretty-printing routine.
+   Assigned to `Fromat.Formatter`.
 
 #### Format
 
@@ -237,8 +238,8 @@ Their meanings are:
    and `offset` parameters of the break may be optionally specified with the following form:
    "@;<_(nspace)_ _(offset)_>".  If no parameters are provided, the good break defaults to
    a good break space.
- * `@.`: flush the pretty printer and output a new line, as with print_newline ().
- * `@?`: flush the pretty printer as with print_flush (). This is equivalent to the conversion %!.
+ * `@.`: flush the pretty-printer and output a new line, as with print_newline ().
+ * `@?`: flush the pretty-printer as with print_flush (). This is equivalent to the conversion %!.
  * `@\n`: force a newline, as with force_newline ().
  * `@@`: print a single @ character.
 
@@ -332,7 +333,7 @@ current indentation. If the line is not split, `nspaces` spaces are printed.
 
 ##### Formatter#printFlush()
 
-Flush the pretty printer: all opened boxes are closed, all pending text
+Flush the pretty-printer: all opened boxes are closed, all pending text
 are passed to handlers `onString`, `onSpace` or `onNewline` which are passed
 to the constructor, and the `flush` handler is called.
 
@@ -359,5 +360,5 @@ Unsupported features (currently, at least) are:
 
 Printing results may not be identical to OCaml's corresponding code.
 It because not only this library is still in development but also this library
-does not aim the 100% compatibility to OCaml.
+does not aim to be 100% compatible to OCaml.
 

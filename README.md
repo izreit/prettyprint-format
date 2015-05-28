@@ -117,9 +117,22 @@ Same with `Format.setMargin()`, `getMargin()`, `setMaxIndent()` and
 `getMaxIndent()` respectively, except that they works for `Format.sprintf()`.
 Aliasses of the methods with same names of `Format.strFormatter`.
 
+##### Format.stringify(obj, options = {})
+
+Returns a string representing of JSON object `obj`.
+
+A utility method to stringify a JSON object like `JSON.stringify()` but
+in more condensed format, since this function is aware of the margin information.
+`options` can be a number or an object. If it's a number then it is used as
+the margin. Otherwise, the object will be passed to the constructor of `Formatter`.
+
+NOTE that currently cyclic object is not supported.  They may cause infinite loops.
+
 #### Formatter
 
 Can be obtained by `Format.Formatter`.
+Most of the description for the class is largely based on the the document of
+OCaml's Format module.
 
 ##### new Formatter(options)
 
@@ -127,11 +140,11 @@ Returns a new instance of `Formatter`.
 The argument `options`, optional, is an object has zero ore more following properties:
 
  * `margin`: the margin of a line.  Namely, a line is considered as "bleed out"
-   when it includes more characters than `margin`.  Ignored if less than `2`.
-   Default: `80`.
+   when it includes more characters than `margin`.  Ignored if less than 2.
+   Default: 80.
  * `maxIndent`: the limitation to indentation depth. No indentation can be deeper
    than this value, even if the innermost box is opened at more deeper position.
-   Ignored if less than `2`.  Default: `0`.
+   Ignored if less than 2.  Default: 0.
  * `onString`: the function called whenever the formatter prints a string literal.
    Takes one argument, a string to be printed.  If specified, the return value of
    this function is printed instead of the original string.
@@ -211,18 +224,18 @@ Pretty-printing indications are `@` followed by one ore more characters.
 Their meanings are:
 
  * `@[`: open a pretty-printing box. The type and offset of the box may be optionally
-   specified with the following form: "<_(box type)_ _(offset)_>".  Box type is one of
+   specified with the following form: "@[<_(box type)_ _(offset)_>".  Box type is one of
    "h", "v", "hv", or "hov", which stand respectively for an horizontal box, a vertical box,
    an 'horizontal-vertical' box, or an 'horizontal or vertical' box. For instance,
-   "@[<hov 2>" opens an 'horizontal or vertical' box with indentation 2 as obtained with
+   "@[&lt;hov 2&gt;" opens an 'horizontal or vertical' box with indentation 2 as obtained with
    `Formatter#openHovbox(2)`. For more details about boxes, see the various box opening
    functions `Formatter#open*box()`.
  * `@]`: close the most recently opened pretty-printing box.
  * `@,`: output a good break hint, as with `Formatter#printCut()`.
  * `@ `: output a good break space, as with `Formatter#printSpace()`.
- * `@;`: output a fully specified good break as with `Formatter#printBreak()`. The `nspaces`
+ * `@;`: output a fully specified good break as with `Formatter#printBreak()`.  The `nspaces`
    and `offset` parameters of the break may be optionally specified with the following form:
-   "<_(nspace)_ _(offset)_>".  If no parameters are provided, the good break defaults to
+   "@;<_(nspace)_ _(offset)_>".  If no parameters are provided, the good break defaults to
    a good break space.
  * `@.`: flush the pretty printer and output a new line, as with print_newline ().
  * `@?`: flush the pretty printer as with print_flush (). This is equivalent to the conversion %!.
@@ -253,6 +266,84 @@ is less than 2.
 
 Return the current max indent of `this`.
 
+##### Formatter#openBox(additionalIndent)
+
+Open a new pretty-printing box with offset `additionalIndent`. This box is the
+general purpose pretty-printing box. Material in this box is displayed
+'horizontal or vertical': break hints inside the box may lead to a new line,
+if there is no more room on the line to print the remainder of the box,
+or if a new line may lead to a new indentation (demonstrating the indentation
+of the box). When a new line is printed in the box, `additionalIndent` is added
+to the current indentation.
+
+##### Formatter#openHbox()
+
+Open a new pretty-printing box.  This box is 'horizontal': the line is not
+split in this box (new lines may still occur inside boxes nested deeper).
+
+##### Formatter#openVbox(additionalIndent)
+
+Open a new pretty-printing box with offset `additionalIndent`.  This box is
+'vertical': every break hint inside this box leads to a new line.  When a new
+line is printed in the box, `additionalIndent` is added to the current indentation.
+
+##### Formatter#openHvbox(additionalIndent)
+
+Open a new pretty-printing box with offset `additionalIndent`. This box is
+'horizontal-vertical': it behaves as an 'horizontal' box if it fits on a single line,
+otherwise it behaves as a 'vertical' box.  When a new line is printed in the box,
+`additionalIndent` is added to the current indentation.
+
+##### Formatter#openHovbox(additionalIndent)
+
+Open a new pretty-printing box with offset `additionalIndent`. This box is
+'horizontal or vertical': break hints inside this box may lead to a new line,
+if there is no more room on the line to print the remainder of the box. When
+a new line is printed in the box, `additionalIndent` is added to the current
+indentation.
+
+##### Formatter#closeBox()
+
+Close the most recently opened pretty-printing box.
+
+##### Formatter#printInt(n), printString(s), printNumber(n), printBool(b)
+
+Print the argument in the current box as a floored number, a string,
+a number or a boolean respectively.
+
+##### Formatter#printSpace()
+
+Print a whitespace that indicates that the line may be split at this point.
+When the line is splitted, no whitespace are printed.  Equivalent to
+`this.printBreak(1, 0)`.
+
+##### Formatter#printCut()
+
+Indicate that the line may be split at this point.  It either prints nothing
+or splits the line.  This allows line splitting at the current point, without
+printing spaces or adding indentation.  Equivalent to `this.printBreak(0, 0)`.
+
+##### Formatter#printBreak(nspaces, offset)
+
+Insert a break hint in the current box.  It indicates that the line may be
+split at this point, if the contents of the current box does not fit on the
+current line.  If the line is split at that point, `offset` is added to the
+current indentation. If the line is not split, `nspaces` spaces are printed.
+
+##### Formatter#printFlush()
+
+Flush the pretty printer: all opened boxes are closed, all pending text
+are passed to handlers `onString`, `onSpace` or `onNewline` which are passed
+to the constructor, and the `flush` handler is called.
+
+##### Formatter#printNewline()
+
+Equivalent to `this.printFlush()` followed by a newline.
+
+##### Formatter#forceNewline()
+
+Force a newline in the current box.  The indentation of the box still works.
+Not the normal way of pretty-printing, you should prefer break hints.
 
 Incompatiblity with OCaml
 ------------------------
@@ -262,8 +353,11 @@ Unsupported features (currently, at least) are:
  * `*` for "width" and "precision" in conversion specifications. (i.e. `%*.*d`)
  * Semantic tags. (i.e. `open_tag ()` and related functions)
  * `@<n>`, a pritty-printing indication.
- * Tabulation.
+ * Tabulation. (i.e. `open_tbox ()` and related functions)
  * Formatting depth limitation: cyclic objects may cause infinite loops,
-   if the user-defined pretty-printer does not care.
+   unless the user-defined pretty-printer handles
 
+Printing results may not be identical to OCaml's corresponding code.
+It because not only this library is still in development but also this library
+does not aim the 100% compatibility to OCaml.
 

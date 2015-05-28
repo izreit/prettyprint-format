@@ -1,9 +1,8 @@
 {
-  "private": true,
   "name": "prettyprint-format",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "General-purpose pretty-printing library modeled after OCaml's Format module",
-  "main": "lib/index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "mocha",
     "testmakerun": "npm run maketest && npm run test",

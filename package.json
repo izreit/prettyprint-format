@@ -1,6 +1,6 @@
 {
   "name": "prettyprint-format",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "General-purpose pretty-printing library modeled after OCaml's Format module",
   "main": "./index.js",
   "scripts": {
@@ -10,6 +10,13 @@
     "_maketest-n2s": "node test-src/makeTest-numberToString.js",
     "_maketest-compat": "node test-src/makeTest-compat.js -o test/autogen-compat.spec.js -i test-src/dataset-compat.json"
   },
+  "files": [
+    "lib/",
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "package.json"
+  ],
   "keywords": [
     "pretty print",
     "format",

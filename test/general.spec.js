@@ -76,4 +76,15 @@ describe("general", function () {
     }
   });
 
+  it("regression: can be specieid width for %s", function () {
+    expect(pp.sprintf("AA%10sBB", "foo")).to.equal("AA       fooBB");
+    expect(pp.sprintf("AA%-10sBB", "foo")).to.equal("AAfoo       BB");
+    expect(pp.sprintf("AA%- +10sBB", "foo")).to.equal("AAfoo       BB");
+    expect(pp.sprintf("AA%2sBB", "foo")).to.equal("AAfooBB");
+    expect(pp.sprintf("AA%-2sBB", "foo")).to.equal("AAfooBB");
+
+    expect(pp.sprintf("AA%10BZZ", true)).to.equal("AAtrueZZ");
+    expect(pp.sprintf("AA%-10BZZ", false)).to.equal("AAfalseZZ");
+    expect(pp.sprintf("AA%10tZZ", function (ppf) { ppf.printf("s") })).to.equal("AAsZZ");
+  });
 });

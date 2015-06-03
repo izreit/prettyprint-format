@@ -38,6 +38,31 @@ describe("general", function () {
     expect(s).to.equal(a);
   });
 
+  it("setMaxBox/setEllipsisText", function () {
+    var ppf = new pp.Formatter({
+      maxBoxes: 8
+    });
+    expect(ppf.getMaxBoxes()).to.equal(8);
+    expect(ppf.getEllipsisText()).to.equal(".");
+
+    ppf.setMaxBoxes(4);
+    expect(ppf.getMaxBoxes()).to.equal(4);
+    expect(ppf.printf("@[111@[222@[333@[444@]3@]2@]1@]")).to.equal("111222.21");
+
+    var called = false;
+    var s = ppf.printf("@[111@[222@[333@[444%t@]3@]2@]1@]", function (ppf) {
+      called = true;
+    });
+    expect(s).to.equal("111222.21");
+    expect(called).to.equal(true);
+
+    ppf.setMaxBoxes(5);
+    ppf.setEllipsisText("(...)");
+    expect(ppf.getMaxBoxes()).to.equal(5);
+    expect(ppf.getEllipsisText()).to.equal("(...)");
+    expect(ppf.printf("@[111@[222@[333@[444@]3@]2@]1@]")).to.equal("111222333(...)321");
+  });
+
   it("prints several times", function () {
     var lastFinished;
     var ppf = new pp.Formatter({

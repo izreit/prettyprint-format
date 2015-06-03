@@ -55,7 +55,7 @@ prettyprint-format provides similar API to Format module with slight changes:
     - e.g. `fmtr.openHvbox(0)` instead of `pp_open_hvbox fmtr 0`
 - Supports almost espace sequences for `printf()` with additional ones.
 - No rarely-used methods, no deprecated ones.
-- Not implemented: semantic tags, tabulations, formatting depth and ellipsis.
+- Not implemented: semantic tags and tabulations.
 
 Example
 -------
@@ -289,7 +289,7 @@ Return whether the box have already been opened reaches the limitation or not.
 Set the text of the ellipsis printed when too many boxes are opened.
 Default value is a single dot (".").
 
-##### Formatter#getEllipsisText(str)
+##### Formatter#getEllipsisText()
 
 Retrun the text of the ellipsis.
 
@@ -381,8 +381,6 @@ Unsupported features (currently, at least) are:
  * Semantic tags. (i.e. `open_tag ()` and related functions)
  * `@<n>`, a pritty-printing indication.
  * Tabulation. (i.e. `open_tbox ()` and related functions)
- * Formatting depth limitation: cyclic objects may cause infinite loops,
-   unless the user-defined pretty-printer handles
 
 Printing results may not be identical to OCaml's corresponding code.
 It because not only this library is still in development but also this library

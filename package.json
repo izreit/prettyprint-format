@@ -1,6 +1,6 @@
 {
   "name": "prettyprint-format",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "General-purpose pretty-printing library modeled after OCaml's Format module",
   "main": "./index.js",
   "scripts": {

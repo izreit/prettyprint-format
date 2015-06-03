@@ -267,6 +267,32 @@ is less than 2.
 
 Return the current max indent of `this`.
 
+##### Formatter#setMaxBoxes(num)
+
+Set the maximum number of boxes simultaneously opened to `num`.  Material inside
+boxes nested deeper is printed as an ellipsis (more precisely as the string
+returned by `Formatter#getEllipsisText()`).  Ignored if the value is less than 2.
+
+NOTE: To compatible with OCaml, Formatter considers two boxes are already opened
+at the initial state.  You may want to add 2 to the number actually you need.
+
+##### Formatter#getMaxBoxes()
+
+Return the maximum number of boxes allowed before ellipsis.
+
+##### Formatter#overMaxBoxes()
+
+Return whether the box have already been opened reaches the limitation or not.
+
+##### Formatter#setEllipsisText(str)
+
+Set the text of the ellipsis printed when too many boxes are opened.
+Default value is a single dot (".").
+
+##### Formatter#getEllipsisText(str)
+
+Retrun the text of the ellipsis.
+
 ##### Formatter#openBox(additionalIndent)
 
 Open a new pretty-printing box with offset `additionalIndent`. This box is the

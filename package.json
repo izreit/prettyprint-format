@@ -24,6 +24,14 @@
   ],
   "author": "izreit",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/izreit/prettyprint-format.git"
+  },
+  "bugs": {
+    "url": "https://github.com/izreit/prettyprint-format/issues"
+  },
+  "homepage": "https://github.com/izreit/prettyprint-format",
   "devDependencies": {
     "chai": "^2.3.0",
     "commander": "^2.8.1",

@@ -112,4 +112,14 @@ describe("general", function () {
     expect(pp.sprintf("AA%-10BZZ", false)).to.equal("AAfalseZZ");
     expect(pp.sprintf("AA%10tZZ", function (ppf) { ppf.printf("s") })).to.equal("AAsZZ");
   });
+
+  it("%*.*f", function () {
+    expect(pp.sprintf("AA%*sBB", 10, "foo")).to.equal("AA       fooBB");
+    expect(pp.sprintf("AA%-*dBB", 10, 30)).to.equal("AA30        BB");
+    expect(pp.sprintf("AA%.*fBB", 2, 42.12345)).to.equal("AA42.12BB");
+    expect(pp.sprintf("AA%+10.*fBB", 2, 42.12345)).to.equal("AA    +42.12BB");
+    expect(pp.sprintf("AA%+*.*fBB", 8, 2, 42.12345)).to.equal("AA  +42.12BB");
+    expect(pp.sprintf("AA% .*fBB", 3, 42.12345)).to.equal("AA 42.123BB");
+  });
+
 });

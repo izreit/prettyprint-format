@@ -223,7 +223,8 @@ follow the decimal point in the `%f`, `%e`, and `%E` conversions.  For instance,
 The integer in a width or precision can also be specified as "\*", in which case
 an extra number argument is taken to specify the corresponding width or precision.
 This integer argument precedes immediately the argument to print.  For instance,
-%\*d prints a number with as many digits as the value of the argument given before the number.
+%.\*f prints a number with as many cractional digits as the value of the argument
+given before the number.
 
 Pretty-printing indications are `@` followed by one ore more characters.
 Their meanings are:

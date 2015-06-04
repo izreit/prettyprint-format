@@ -382,7 +382,6 @@ Incompatiblity with OCaml
 
 Unsupported features (currently, at least) are:
 
- * `*` for "width" and "precision" in conversion specifications. (i.e. `%*.*d`)
  * Semantic tags. (i.e. `open_tag ()` and related functions)
  * `@<n>`, a pritty-printing indication.
  * Tabulation. (i.e. `open_tbox ()` and related functions)

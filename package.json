@@ -24,6 +24,14 @@
   ],
   "author": "kizz",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kizz/prettyprint-format.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kizz/prettyprint-format/issues"
+  },
+  "homepage": "https://github.com/kizz/prettyprint-format",
   "devDependencies": {
     "chai": "^2.3.0",
     "commander": "^2.8.1",

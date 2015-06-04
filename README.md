@@ -133,7 +133,7 @@ NOTE that currently cyclic object is not supported.  They may cause infinite loo
 
 Can be obtained by `Format.Formatter`.
 Most of the description for the class is largely based on the the document of
-OCaml's Format module.
+OCaml's Format module and Printf module.
 
 ##### new Formatter(options)
 
@@ -220,6 +220,11 @@ The optional `precision` is an integer following to a dot ".", indicating how ma
 follow the decimal point in the `%f`, `%e`, and `%E` conversions.  For instance,
 `%.4f` prints a float with 4 fractional digits.
 
+The integer in a width or precision can also be specified as "\*", in which case
+an extra number argument is taken to specify the corresponding width or precision.
+This integer argument precedes immediately the argument to print.  For instance,
+%.\*f prints a number with as many cractional digits as the value of the argument
+given before the number.
 
 Pretty-printing indications are `@` followed by one ore more characters.
 Their meanings are:
@@ -377,7 +382,6 @@ Incompatiblity with OCaml
 
 Unsupported features (currently, at least) are:
 
- * `*` for "width" and "precision" in conversion specifications. (i.e. `%*.*d`)
  * Semantic tags. (i.e. `open_tag ()` and related functions)
  * `@<n>`, a pritty-printing indication.
  * Tabulation. (i.e. `open_tbox ()` and related functions)

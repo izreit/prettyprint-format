@@ -1,7 +1,7 @@
 // vim: set ts=2 sts=2 sw=2 et ai syn=javascript:
 
 var expect = require("chai").expect;
-var pp = require("../lib/");
+var pp = require("../");
 
 describe("compatibility", function () {
 
@@ -14,7 +14,7 @@ describe("compatibility", function () {
      */
     var ppf = new pp.Formatter();
     ppf.setMargin(<%- c.margin %>, <%= c.margin - 1 %>);
-    var formatted = ppf.sprintf(<%- c.source %>);
+    var formatted = ppf.printf(<%- c.source %>);
     var expected = <%- c.expected %>;
     expect(formatted).equal(expected);
   });

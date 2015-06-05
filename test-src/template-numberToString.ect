@@ -1,0 +1,17 @@
+// vim: set ts=2 sts=2 sw=2 et ai syn=javascript:
+
+var expect = require("chai").expect;
+var numberToString = require("../lib/numberToString");
+
+describe("numberToString", function () {
+
+<% for c in @testCases : %>
+  it(<%- c.name %>, function () {
+    var actual = numberToString(<%- c.num %>, <%- c.flags %>, <%- c.width %>, <%- c.prec %>, <%- c.type %>);
+    expect(actual).equal(<%- c.expected %>);
+  });
+
+<% end %>
+});
+
+

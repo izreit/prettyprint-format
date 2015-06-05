@@ -7,7 +7,6 @@ var ECT = require("ect");
 var program = require("commander");
 
 program
-  .version("0.0.1")
   .option("-o, --output <filename>", "Specify the output file.")
   .option("-i, --input <filename>", "Specify the test data set.")
   .parse(process.argv);
@@ -15,45 +14,49 @@ program
 var dataFilePath = program.input;
 var outFilePath = program.output;
 
-if (!dataFilePath)
+if (!dataFilePath) {
   console.log("Error: no input file.");
-if (!outFilePath)
+  process.exit(1);
+}
+if (!outFilePath) {
   console.log("Error: no output file specified.");
+  process.exit(1);
+}
 
 function makeAnswer(m, s) {
-  s = s.replace(/([<>;])/g, function (m) { return "\\" + m; });
+  s = s.replace(/\n/g, "\\n").replace(/\\/g, "\\\\\\")
+       .replace(/([<>;])/g, function (m) { return "\\" + m; });
   var cmd = "echo open Format\\;\\; "
           +      "set_margin " + m + "\\;\\; "
-          +      "set_max_indent " + (m - 1) + "\\;\\; "  // set_margin implicitly modified this value non-trivially...
+          +      "set_max_indent " + (m - 1) + "\\;\\; " // it is implicitly modified by set_margin.
           +      "printf \\\"" + s + "\\\" | "
           + "ocaml -stdin";
   var result = child_process.execSync(cmd).toString();
-  return result.substr(0, result.length - 1); // remove trailing newline.
+  return result;
 }
 
 var renderer = ECT({ root: __dirname });
-//var dataFilePath = path.join(__dirname, "testDataSet.json");
 var content = fs.readFileSync(dataFilePath, "utf8");
 
 var testCases = [];
 
 JSON.parse(content).forEach(function (t) {
   var margins = (typeof t.margin === "number") ? [t.margin] : t.margin;
+  var src = JSON.stringify(t.source);
   margins.forEach(function (m) {
     var ans = makeAnswer(m, t.source);
     testCases.push({
-      name: JSON.stringify((t.name ? (t.name + ":") : "") + (m + "/" + t.source)),
+      name: JSON.stringify((t.name ? (t.name + ":") : "") + (m + "/" + src)),
       comment: t.comment,
       margin: m,
-      source: JSON.stringify(t.source),
+      source: src,
       expected: JSON.stringify(ans),
       rawExpected: ans,
     });
   });
 });
 
-var generated = renderer.render("template.ect", { testCases: testCases });
-//var outFilePath = path.join(__dirname, "..", "test", "printf.spec.js");
+var generated = renderer.render("template-compat.ect", { testCases: testCases });
 fs.writeFileSync(outFilePath, generated, "utf8");
 console.log("Done!");
 

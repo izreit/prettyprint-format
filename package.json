@@ -1,15 +1,23 @@
 {
-  "private": true,
   "name": "prettyprint-format",
-  "version": "0.0.1",
-  "description": "General-purpose pretty print routine modeled after Format module in OCaml",
-  "main": "lib/index.js",
+  "version": "0.1.2",
+  "description": "General-purpose pretty-printing library modeled after OCaml's Format module",
+  "main": "./index.js",
   "scripts": {
     "browserify": "browserify -s Format lib/index.js -o prettyprint-format.js",
     "test": "mocha",
-    "testmake": "node test-src/makeTest.js -o test/compatibility.spec.js -i test-src/testDataSet.json",
-    "testmakerun": "npm run testmake && npm run test"
+    "testmakerun": "npm run maketest && npm run test",
+    "maketest": "npm run _maketest-compat && npm run _maketest-n2s",
+    "_maketest-n2s": "node test-src/makeTest-numberToString.js",
+    "_maketest-compat": "node test-src/makeTest-compat.js -o test/autogen-compat.spec.js -i test-src/dataset-compat.json"
   },
+  "files": [
+    "lib/",
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "package.json"
+  ],
   "keywords": [
     "pretty print",
     "format",
@@ -17,6 +25,14 @@
   ],
   "author": "kizz",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kizz/prettyprint-format.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kizz/prettyprint-format/issues"
+  },
+  "homepage": "https://github.com/kizz/prettyprint-format",
   "devDependencies": {
     "browserify": "^10.2.0",
     "chai": "^2.3.0",

@@ -25,7 +25,7 @@ Features
 - Automatic line break and indentation
 - Highly customizable output
 - User-defined pretty-printer
-- No dependencies
+- No runtime dependencies
 - Bonus: JSON.stringify()-like object dumper, more condensed and readable
 
 Installation
@@ -34,6 +34,10 @@ Installation
 For Node.js:
 
     npm install prettyprint-format
+
+For browsers: (use the included packed file)
+
+    <script type="text/javascript" src="prettyprint-format.js"></script>
 
 Usage
 -------

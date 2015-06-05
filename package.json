@@ -4,6 +4,7 @@
   "description": "General-purpose pretty-printing library modeled after OCaml's Format module",
   "main": "./index.js",
   "scripts": {
+    "prepublish": "browserify -s Format ./index.js -o prettyprint-format.js",
     "test": "mocha",
     "testmakerun": "npm run maketest && npm run test",
     "maketest": "npm run _maketest-compat && npm run _maketest-n2s",
@@ -33,6 +34,7 @@
   },
   "homepage": "https://github.com/izreit/prettyprint-format",
   "devDependencies": {
+    "browserify": "^10.2.0",
     "chai": "^2.3.0",
     "commander": "^2.8.1",
     "ect": "^0.5.9",

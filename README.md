@@ -1,6 +1,8 @@
 prettyprint-format
 ==================
 
+[![Build Status](https://travis-ci.org/kizz/prettyprint-format.svg)](https://travis-ci.org/kizz/prettyprint-format)
+
 prettyprint-format is a JavaScript general-purpose pretty-printing library
 modeled after [OCaml](http://ocaml.org/)'s
 [Format](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Format.html) module.

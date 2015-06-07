@@ -385,13 +385,42 @@ Not the normal way of pretty-printing, you should prefer break hints.
 Incompatiblity with OCaml
 ------------------------
 
-Unsupported features (currently, at least) are:
-
- * Semantic tags. (i.e. `open_tag ()` and related functions)
- * `@<n>`, a pritty-printing indication.
- * Tabulation. (i.e. `open_tbox ()` and related functions)
+(If you are not famillier with OCaml's Format module, just ignore this section.)
 
 Printing results may not be identical to OCaml's corresponding code.
 It because not only this library is still in development but also this library
 does not aim to be 100% compatible to OCaml.
+
+#### No need to flush
+
+We provide some escape sequences that indicate to "flush" the buffer, such as "@.",
+"@?" or "%!". But they are actually not absolutely necessary ones in prettyprint-format.
+Even no flushing is requested, we automatically flush at last by counting the nest
+level of `printf()`.
+
+This is because the way we print a string to console is `console.log()` that always
+prints the following newline.  This means we cannot flush intermediate format result
+especially when the formatter has a customized newline (via Formatter's constructor
+option: `onNewline`).
+
+#### Formatter#setMargin() and pp\_set\_margin
+
+Unlike its name, our `Formatter#setMargin()` takes two arguments called
+`margin` and optional `maxIndent` while `pp_set_margin` in OCaml takes
+just one argument.  Our second argument is used to call `setMaxIndent`,
+as its name suggests.
+
+This is an intentional incompatibility.  Because we found that calling
+`pp_set_margin` changes the max indent value implicitly in non-trivial,
+undocumented and unseeable way.  Instead of emulating that behaviour,
+we offer the explicit way to specify the max indent value when you change
+the margin value.
+
+#### Unsupported features
+
+We do not have the following features (currently, at least):
+
+ * Semantic tags. (i.e. `open_tag ()` and related functions)
+ * `@<n>`, a pritty-printing indication.
+ * Tabulation. (i.e. `open_tbox ()` and related functions)
 

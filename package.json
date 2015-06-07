@@ -13,6 +13,7 @@
   },
   "files": [
     "lib/",
+    "prettyprint-format.js",
     "LICENSE",
     "README.md",
     "index.js",

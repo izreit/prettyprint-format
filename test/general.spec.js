@@ -5,7 +5,26 @@ var pp = require("../");
 
 describe("general", function () {
 
+  var savedStatus;
+
+  beforeEach(function () {
+    savedStatus = {
+      mgn: pp.getMargin(),
+      mi: pp.getMaxIndent(),
+      smgn: pp.getStrMargin(),
+      smi: pp.getStrMaxIndent()
+    };
+  });
+
+  afterEach(function () {
+    pp.setMargin(savedStatus.mgn, savedStatus.mi);
+    pp.setStrMargin(savedStatus.smgn, savedStatus.smi);
+  });
+
   it("margin/maxIndent", function () {
+    expect(pp.getMargin()).to.equal(pp.DEFAULT_MARGIN);
+    expect(pp.getMaxIndent()).to.equal(0);
+
     pp.setMargin(40);
     expect(pp.getMargin()).to.equal(40);
 
@@ -18,6 +37,9 @@ describe("general", function () {
   });
 
   it("strMargin/strMaxIndent", function () {
+    expect(pp.getStrMargin()).to.equal(pp.DEFAULT_MARGIN);
+    expect(pp.getStrMaxIndent()).to.equal(0);
+
     pp.setStrMargin(40);
     expect(pp.getStrMargin()).to.equal(40);
 
@@ -90,15 +112,19 @@ describe("general", function () {
   });
 
   it("treats break hints", function () {
-    var mgn = pp.getStrMargin(), mi = pp.getStrMaxIndent();
-    try {
-      pp.setStrMargin(20, 19);
-      var s = pp.sprintf("@[foo@;bar@]@?");
-      var a = "foo bar";
-      expect(s).to.equal(a);
-    } finally {
-      pp.setStrMargin(mgn, mi);
-    }
+    pp.setStrMargin(20, 19);
+    var s = pp.sprintf("@[foo@;bar@]@?");
+    var a = "foo bar";
+    expect(s).to.equal(a);
+  });
+
+  it("bleeds out the margin unless breakable", function () {
+    pp.setStrMargin(8);
+    var s = pp.sprintf("@[<hov 4><123456789@ @[<hov 4><123456789@ @[<hov 4><123456789>@]>@]>@]");
+    var a = "<123456789\n"
+          + "    <123456789\n"
+          + "        <123456789>>>";
+    expect(s).to.equal(a);
   });
 
   it("regression: can be specieid width for %s", function () {

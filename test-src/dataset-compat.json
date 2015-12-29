@@ -94,5 +94,10 @@
     "comment": "force newline",
     "margin": [6, 10, 20],
     "source": "@[foo@ @[[aaaa@\nbbb@ cccc]@]@ zzz@]@."
+  },
+  {
+    "comment": "issue at v0.1.3: hvbox margin handling mistake",
+    "margin": [3, 5, 7, 9],
+    "source": "@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@."
   }
 ]

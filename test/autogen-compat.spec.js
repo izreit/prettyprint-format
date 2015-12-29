@@ -1370,5 +1370,67 @@ describe("compatibility", function () {
     expect(formatted).equal(expected);
   });
 
+  it("3/\"@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.\"", function () {
+    // issue at v0.1.3: hvbox margin handling mistake
+    /* 
+      123
+      [
+        3,
+        1
+      ]
+      
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(3, 2);
+    var formatted = ppf.printf("@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.");
+    var expected = "[\n  3,\n  1\n]\n";
+    expect(formatted).equal(expected);
+  });
+
+  it("5/\"@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.\"", function () {
+    // issue at v0.1.3: hvbox margin handling mistake
+    /* 
+      12345
+      [
+        3,
+        1
+      ]
+      
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(5, 4);
+    var formatted = ppf.printf("@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.");
+    var expected = "[\n  3,\n  1\n]\n";
+    expect(formatted).equal(expected);
+  });
+
+  it("7/\"@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.\"", function () {
+    // issue at v0.1.3: hvbox margin handling mistake
+    /* 
+      1234567
+      [3, 1]
+      
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(7, 6);
+    var formatted = ppf.printf("@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.");
+    var expected = "[3, 1]\n";
+    expect(formatted).equal(expected);
+  });
+
+  it("9/\"@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.\"", function () {
+    // issue at v0.1.3: hvbox margin handling mistake
+    /* 
+      123456789
+      [3, 1]
+      
+     */
+    var ppf = new pp.Formatter();
+    ppf.setMargin(9, 8);
+    var formatted = ppf.printf("@[<hv>[@;<0 2>@[<hov>3,@ 1@]@,]@]@.");
+    var expected = "[3, 1]\n";
+    expect(formatted).equal(expected);
+  });
+
 });
 

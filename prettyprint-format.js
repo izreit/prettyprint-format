@@ -20,16 +20,13 @@ var Box = (function () {
     constructor: { value: klass },
   });
 
-  proto.print_ = function (boxLeft, startColumn) {
-    var ppf_ = this.formatter_;
-    var buf_ = this.buf_;
-    var self = this;
+  proto.format = function (boxLeft, startColumn) {
     var queue = [];
 
     function flushQueue(left) {
       for (var i = 0, len = queue.length; i < len; ++i) {
         var frag = queue[i];
-        left = frag.print(startColumn, left);
+        left = frag.format(startColumn, left);
       }
       queue = [];
       return left;
@@ -42,13 +39,13 @@ var Box = (function () {
     var ENABLE_STRUCTURAL_BREAK = false;
 
     var lastHintInBox = (this.hints_.length > 0) ? this.hints_[this.hints_.length - 1] : undefined;
-    var limit = ppf_.margin() - 1;
+    var limit = this.formatter_.margin() - 1;
     var left = startColumn;
     var right = left;
     var lastHint;
 
-    for (var i = 0, len = buf_.length; i < len; ++i) {
-      var frag = buf_[i];
+    for (var i = 0, len = this.buf_.length; i < len; ++i) {
+      var frag = this.buf_[i];
       if (frag.kind === "BreakHint") {
         right = left = flushQueue(left);
         lastHint = frag;
@@ -59,10 +56,10 @@ var Box = (function () {
 
       if (right > limit ||
           (frag.kind === "BreakHint" &&
-           (frag.hasHardBreakHint() || ppf_.lastPrintedIndent_ > startColumn + this.boxIndent()) ||
+           (frag.hasHardBreakHint() || this.formatter_.nearestIndent_ > startColumn + this.boxIndent()) ||
            (ENABLE_STRUCTURAL_BREAK && frag === lastHintInBox))) {
         if (lastHint) {
-          lastHint.setToBreak(true);
+          lastHint.setToBreak();
           right = left = flushQueue(left);
           lastHint = undefined;
         }
@@ -95,8 +92,13 @@ var BoxBase = (function () {
     this.additionalIndent_ = additionalIndent;
     this.sensitive_ = !!sensitive;
 
+    this.formatData_ = {
+      hasLineBreak: false,
+      hasSensitiveLineBreak: false
+    };
+
     this.parentBox_ = undefined;
-    this.lastPrintedIndent_ = 0;
+    this.nearestIndent_ = 0;
     this.buf_ = [];
     this.hints_ = [];
   }
@@ -113,10 +115,6 @@ var BoxBase = (function () {
     // nothing to do.
   };
 
-  proto.dumpString_ = function () {
-    return "BOX:" + this.constructor.name;
-  };
-
   proto.appendedTo = function (box) {
     this.parentBox_ = box;
   };
@@ -129,8 +127,19 @@ var BoxBase = (function () {
   };
 
   proto.clear = function () {
+    this.parentBox_ = undefined;
+    this.nearestIndent_ = 0;
     this.buf_ = [];
     this.hints_ = [];
+    this.resetFormatData();
+  };
+
+  proto.resetFormatData = function () {
+    this.formatData_ = {
+      hasLineBreak: false,
+      hasSensitiveLineBreak: false
+    };
+    this.buf_.forEach(function (c) { c.resetFormatData(); });
   };
 
   proto.leftPosAfterPutHorizontally = function (left, limit) {
@@ -150,6 +159,20 @@ var BoxBase = (function () {
     }) != -1;
   };
 
+  proto.notifyLineBreak = function () {
+    if (this.formatData_.hasLineBreak)
+      return;
+    this.formatData_.hasLineBreak = true;
+    if (this.sensitive_)
+      this.formatData_.hasSensitiveLineBreak = true;
+    if (this.parentBox_)
+      this.parentBox_.notifyLineBreak();
+  };
+
+  proto.format = function (boxLeft, startColumn) {
+    throw new Error("PureVirtual: BoxBase#format");
+  };
+
   proto.print = function (boxLeft, startColumn) {
     var printer = this.formatter_.printer();
     printer.outputDebugString("<");
@@ -159,7 +182,20 @@ var BoxBase = (function () {
   };
 
   proto.print_ = function (boxLeft, startColumn) {
-    throw new Error("PureVirtual: BoxBase#print_");
+    var left = startColumn;
+    for (var i = 0, len = this.buf_.length; i < len; ++i)
+      left = this.buf_[i].print(startColumn, left);
+    return left;
+  };
+
+  proto.dumpString_ = function () {
+    return this.constructor.name;
+  };
+
+  proto.debugDump_ = function (indentDepth) {
+    var indent = util.spacer(indentDepth);
+    var childrenDump = this.buf_.map(function (c) { return c.debugDump_(indentDepth + 2); });
+    return (indent + this.dumpString_()) + "\n" + childrenDump.join("\n");
   };
 
   return klass;
@@ -189,17 +225,23 @@ var klass = BreakHint;
 var proto = klass.prototype = Object.create(baseKlass.prototype, { constructor: { value: klass } });
 
 proto.dumpString_ = function () {
-  return "HINT:" + this.nspaces + "/" + this.offset + "/" + this.hard;
+  return "HINT: nspaces:" + this.nspaces + " offset:" + this.offset + " hard:" + this.hard + " doBreak_:" + this.doBreak_;
 }
 
 proto.appendedTo = function (box) {
   this.parentBox_ = box;
 };
 
-proto.setToBreak = function (doBreak) {
-  util.assert(!this.doBreak_);
+proto.resetFormatData = function () {
+  this.doBreak_ = false;
+};
 
-  this.doBreak_ = !!doBreak;
+proto.setToBreak = function () {
+  util.assert(this.parentBox_, "must have the parent box.");
+  util.assert(!this.doBreak_, "must not called twice without reset.");
+  this.doBreak_ = true;
+
+  this.parentBox_.notifyLineBreak();
 };
 
 proto.hasHardBreakHint = function () {
@@ -210,6 +252,19 @@ proto.leftPosAfterPutHorizontally = function (left, limit) {
   return left + this.nspaces;
 };
 
+proto.format = function (boxLeft, startColumn) {
+  util.assert(this.parentBox_, "BreakHint#format(): must have a parent box.");
+  var ppf = this.formatter_;
+
+  if (this.doBreak_) {
+    var indent = ppf.clipByMaxIndent_(boxLeft + this.parentBox_.boxIndent() + this.offset);
+    ppf.nearestIndent_ = indent;
+    return indent;
+  } else {
+    return startColumn + this.nspaces;
+  }
+};
+
 proto.print = function (boxLeft, startColumn) {
   util.assert(this.parentBox_, "BreakHint#print(): must have a parent box.");
   var ppf = this.formatter_;
@@ -217,7 +272,6 @@ proto.print = function (boxLeft, startColumn) {
 
   if (this.doBreak_) {
     var indent = ppf.clipByMaxIndent_(boxLeft + this.parentBox_.boxIndent() + this.offset);
-    ppf.lastPrintedIndent_ = indent;
     printer.outputNewline();
     if (indent > 0)
       printer.outputSpace(indent);
@@ -262,6 +316,11 @@ var EllispsisBox = (function () {
 
   proto.hasHardBreakHint = function () {
     return false;
+  };
+
+  proto.format = function (boxLeft, startColumn) {
+    var ell = this.formatter_.getEllipsisText();
+    return startColumn + ell.length;
   };
 
   proto.print_ = function (boxLeft, startColumn) {
@@ -370,6 +429,7 @@ function Formatter(opt) {
   this.ellipsisText_ = ".";
   this.boxes_ = [];
   this.rootBox_ = new Hbox(this);
+  this.debugDumpOnFlush_ = !!opt.debugDumpOnFlush;
 
   this.nestCount_ = 0;
 
@@ -423,8 +483,6 @@ proto.openHovbox = function (additionalIndent, sensitive) {
 
 proto.closeBox = function () {
   this.boxes_.pop();
-  if (this.boxes_.length === 0)
-    this.flush_();
 };
 
 proto.printString = function (s) {
@@ -458,14 +516,11 @@ proto.printBreak = function (nspaces, offset, hard) {
 };
 
 proto.printFlush = function () {
-  while (this.boxes_.length > 0)
-    this.closeBox();
-  this.flush_();
+  this.flush_(false);
 };
 
 proto.printNewline = function () {
-  this.printFlush();
-  this.printer_.outputNewline();
+  this.flush_(true);
 };
 
 proto.forceNewline = function () {
@@ -529,11 +584,16 @@ proto.printf = function () {
   } finally {
     --this.nestCount_;
   }
-  if (this.nestCount_ === 0) {
-    this.printFlush();
-    return this.printer_.finish();
-  }
-  return undefined;
+  return (this.nestCount_ === 0 && this.boxes_.length === 0) ? this.finishPrint() : undefined;
+};
+
+proto.finishPrint = function () {
+  if (this.nestCount_ !== 0)
+    throw new Error("Formatter#finishPrint(): Still open "
+                     + this.nestCount_ + " boxes. cannot finish until the all box closed.");
+  if (this.rootBox_.buf_.length !== 0)  // Ugh! dirty way to determine whether or not already flushed
+    this.flush_(false);
+  return this.printer_.finish();
 };
 
 proto.printObject = function (ppf, o) {
@@ -587,10 +647,17 @@ proto.clipByMaxIndent_ = function (indent) {
   return (this.maxIndent_ > 0) ? Math.min(indent, this.maxIndent_) : indent;
 };
 
-proto.flush_ = function () {
+proto.flush_ = function (addNewline) {
+  while (this.boxes_.length > 0)
+    this.closeBox();
+  this.rootBox_.format(0, 0);
+  if (this.debugDumpOnFlush_)
+    console.log(this.rootBox_.debugDump_(0));
   this.rootBox_.print(0, 0);
-  this.rootBox_.clear();
+  if (addNewline)
+    this.printer_.outputNewline();
   this.printer_.outputFlush();
+  this.rootBox_.clear();
 };
 
 proto.printf_a_ = function (format, args) {
@@ -632,10 +699,10 @@ proto.printf_a_ = function (format, args) {
         var openers = {
           "": "openBox",
           hv: "openHvbox",
-          shv: "openHvbox",
           v: "openVbox",
           h: "openHbox",
           hov: "openHovbox",
+          shv: "openHvbox",  // TODO document shvbox
         };
         var sensitiveTable = {
           shv: true,
@@ -645,7 +712,7 @@ proto.printf_a_ = function (format, args) {
           throw new Error("Fomrater#printf_a_: Unknown box @[" + arg[0] + " :" + arg[1]);
         }
         var additionalIndent = Number(arg[2]) || 0;
-        this[opener](additionalIndent, !!sensitiveTable[opener]);
+        this[opener](additionalIndent, !!sensitiveTable[arg[1]]);
         break;
       case "@]":
         this.closeBox();
@@ -755,6 +822,8 @@ module.exports = Formatter;
 },{"./Box":2,"./BreakHint":4,"./EllipsisBox":5,"./Hbox":9,"./Hovbox":10,"./Hvbox":11,"./Printer":12,"./Text":13,"./Vbox":14,"./numberToString":15,"./util":16}],8:[function(require,module,exports){
 // vim: set ts=2 sts=2 sw=2 et ai:
 
+var util = require("./util");
+
 var Fragment = (function () {
   var klass = Fragment;
 
@@ -769,7 +838,11 @@ var Fragment = (function () {
     throw new Error("PureVirtual: Fragment#appendedTo");
   };
 
-  proto.setToBreak = function (box) {
+  proto.resetFormatData = function () {
+    throw new Error("PureVirtual: Fragment#resetFormatData");
+  };
+
+  proto.setToBreak = function () {
     throw new Error("PureVirtual: Fragment#setToBreak");
   };
 
@@ -781,8 +854,20 @@ var Fragment = (function () {
     throw new Error("PureVirtual: Fragment#leftPosAfterPutHorizontally");
   };
 
+  proto.format = function (boxLeft, startColumn) {
+    throw new Error("PureVirtual: Fragment#format");
+  };
+
   proto.print = function (boxLeft, startColumn) {
     throw new Error("PureVirtual: Fragment#print");
+  };
+
+  proto.dumpString_ = function () {
+    throw new Error("PureVirtual: Fragment#dumpString_");
+  };
+
+  proto.debugDump_ = function (indentDepth) {
+    return util.spacer(indentDepth) + this.dumpString_();
   };
 
   return klass;
@@ -791,7 +876,7 @@ var Fragment = (function () {
 module.exports = Fragment;
 
 
-},{}],9:[function(require,module,exports){
+},{"./util":16}],9:[function(require,module,exports){
 // vim: set ts=2 sts=2 sw=2 et ai:
 
 var BoxBase = require("./BoxBase");
@@ -812,11 +897,11 @@ var Hbox = (function () {
     return false; // Nobody break the line in hbox, even they are hard.
   };
 
-  proto.print_ = function (boxLeft, startColumn) {
+  proto.format = function (boxLeft, startColumn) {
     var left = startColumn;
     for (var i = 0, len = this.buf_.length; i < len; ++i) {
       var frag = this.buf_[i];
-      left = frag.print(boxLeft, left);
+      left = frag.format(boxLeft, left);
     }
     return left;
   };
@@ -844,28 +929,25 @@ var Hovbox = (function () {
     constructor: { value: klass },
   });
 
-  proto.print_ = function (boxLeft, startColumn) {
-    var ppf_ = this.formatter_;
-    var buf_ = this.buf_;
-    var self = this;
+  proto.format = function (boxLeft, startColumn) {
     var queue = [];
 
     function flushQueue(left) {
       for (var i = 0, len = queue.length; i < len; ++i) {
         var frag = queue[i];
-        left = frag.print(startColumn, left);
+        left = frag.format(startColumn, left);
       }
       queue = [];
       return left;
     }
 
-    var limit = ppf_.margin() - 1;
+    var limit = this.formatter_.margin() - 1;
     var left = startColumn;
     var right = left;
     var lastHint;
 
-    for (var i = 0, len = buf_.length; i < len; ++i) {
-      var frag = buf_[i];
+    for (var i = 0, len = this.buf_.length; i < len; ++i) {
+      var frag = this.buf_[i];
       if (frag.kind === "BreakHint") {
         right = left = flushQueue(left);
         lastHint = frag;
@@ -874,9 +956,11 @@ var Hovbox = (function () {
       var hright = frag.leftPosAfterPutHorizontally(right, limit);
       right = hright;
 
-      if (right > limit || (frag.kind === "BreakHint" && frag.hasHardBreakHint())) {
+      if (right > limit ||
+          (frag.kind === "BreakHint" &&
+           frag.hasHardBreakHint())) {
         if (lastHint) {
-          lastHint.setToBreak(true);
+          lastHint.setToBreak();
           right = left = flushQueue(left);
           lastHint = undefined;
         }
@@ -909,18 +993,25 @@ var Hvbox = (function () {
     constructor: { value: klass },
   });
 
-  proto.print_ = function (boxLeft, startColumn) {
+  proto.format = function (boxLeft, startColumn) {
+    return this.formatImpl_(boxLeft, startColumn, false);
+  };
+
+  proto.formatImpl_ = function (boxLeft, startColumn, forceToBreak) {
     var limit = this.formatter_.margin() - 1;
-    if ((this.leftPosAfterPutHorizontally(startColumn, limit) >= limit) ||
-        (this.sensitive_ && this.hasHardBreakHint())) {
-      this.hints_.forEach(function (h) { h.setToBreak(true); });
+    var toBreak = forceToBreak || (this.leftPosAfterPutHorizontally(startColumn, limit) > limit);
+    if (toBreak) {
+      this.hints_.forEach(function (h) { h.setToBreak(); });
     }
 
     var left = startColumn;
     for (var i = 0, len = this.buf_.length; i < len; ++i) {
-      var frag = this.buf_[i];
-      var lleft = frag.print(startColumn, left);
-      left = lleft;
+      left = this.buf_[i].format(startColumn, left);
+
+      if (!toBreak && this.formatData_.hasSensitiveLineBreak) {
+        this.resetFormatData();
+        return this.formatImpl_(boxLeft, startColumn, true);
+      }
     }
     return left;
   };
@@ -1031,14 +1122,18 @@ var klass = Text;
 var proto = klass.prototype = Object.create(baseKlass.prototype, { constructor: { value: klass } });
 
 proto.dumpString_ = function () {
-  return "TEXT:" + this.content;
+  return "TEXT: " + this.content;
 }
 
 proto.appendedTo = function (box) {
   // nothing to do.
 };
 
-proto.setToBreak = function (box) {
+proto.resetFormatData = function () {
+  // nothing to do.
+};
+
+proto.setToBreak = function () {
   // nothing to do.
 };
 
@@ -1048,6 +1143,10 @@ proto.hasHardBreakHint = function () {
 
 proto.leftPosAfterPutHorizontally = function (left, limit) {
   return left + this.content.length;
+};
+
+proto.format = function (boxLeft, startColumn) {
+  return startColumn + this.content.length;
 };
 
 proto.print = function (boxLeft, startColumn) {
@@ -1079,15 +1178,13 @@ var Vbox = (function () {
     return this.hints_.length() > 0; // Since any break hint cause a line break in Vbox.
   };
 
-  proto.print_ = function (boxLeft, startColumn) {
-    boxLeft = startColumn;
-
+  proto.format = function (boxLeft, startColumn) {
     var left = startColumn;
     for (var i = 0, len = this.buf_.length; i < len; ++i) {
       var frag = this.buf_[i];
       if (frag.kind === "BreakHint")
-        frag.setToBreak(true);
-      left = frag.print(boxLeft, left);
+        frag.setToBreak();
+      left = frag.format(startColumn, left);
     }
     return left;
   };

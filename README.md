@@ -383,6 +383,17 @@ Equivalent to `this.printFlush()` followed by a newline.
 Force a newline in the current box.  The indentation of the box still works.
 Not the normal way of pretty-printing, you should prefer break hints.
 
+##### Formatter#finishPrint()
+
+Obtain the pretty-printing result after flushing the pretty-printer.  You can
+call this method to obtain the final result when you use low-level functions
+(like `openBox()`, `closeBox()`, `printString()` and so on) but not `printf()`.
+
+`printf()` calls this function and returns its result automatically.  So in
+many case you do not need to call this function.
+
+Not in OCaml.  Must be called after all boxes are closed.
+
 Incompatiblity with OCaml
 ------------------------
 

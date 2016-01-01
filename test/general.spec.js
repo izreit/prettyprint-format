@@ -190,4 +190,32 @@ describe("general", function () {
     var formatted = pp.sprintf(target);
     expect(formatted).equal(expected_fullBreak);
   });
+
+  it("finishPrint()", function () {
+    var ppf = new pp.Formatter({ margin: 20 });
+    ppf.openHvbox(1);
+    ppf.printf("%e", 10.3);
+    ppf.printSpace();
+    ppf.printString("+");
+    ppf.printSpace();
+    ppf.printf("%d", 15);
+    ppf.closeBox();
+    var result = ppf.finishPrint();
+    expect(result).to.equal("1.03e+1 + 15");
+
+    ppf.setMargin(5);
+    ppf.openHvbox(1);
+    ppf.printf("%e", 10.3);
+    ppf.printSpace();
+    ppf.printString("+");
+    ppf.printSpace();
+    ppf.printf("%d", 15);
+    ppf.closeBox();
+    var result = ppf.finishPrint();
+    expect(result).to.equal([
+      "1.03e+1",
+      " +",
+      " 15"
+    ].join("\n"));
+  });
 });

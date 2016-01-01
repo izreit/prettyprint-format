@@ -148,4 +148,74 @@ describe("general", function () {
     expect(pp.sprintf("AA% .*fBB", 3, 42.12345)).to.equal("AA 42.123BB");
   });
 
+  it("sensitive hvbox", function () {
+    var target = "@[<hv>[@;<0 2>@[<shv>"
+               +   "@[<hv>[@;<0 2>@[<shv>3,@ fooo@]@,]@]"
+               + ",@ 'ss'@]@,]@]";
+    pp.setStrMargin(18);
+    var formatted = pp.sprintf(target);
+    var expected_noBreak = [
+      "[[3, fooo], 'ss']"
+    ].join("\n");
+    expect(formatted).equal(expected_noBreak);
+
+    pp.setStrMargin(17);
+    var formatted = pp.sprintf(target);
+    var expected_breakInner = [
+      "[",
+      "  [3, fooo],",
+      "  'ss'",
+      "]"
+    ].join("\n");
+    expect(formatted).equal(expected_breakInner);
+
+    pp.setStrMargin(12);
+    var formatted = pp.sprintf(target);
+    expect(formatted).equal(expected_breakInner);
+
+    pp.setStrMargin(11);
+    var formatted = pp.sprintf(target);
+    var expected_fullBreak = [
+      "[",
+      "  [",
+      "    3,",
+      "    fooo",
+      "  ],",  // 'ss' is not here because of sensitive hvbox
+      "  'ss'",
+      "]"
+    ].join("\n");
+    expect(formatted).equal(expected_fullBreak);
+
+    pp.setStrMargin(5);
+    var formatted = pp.sprintf(target);
+    expect(formatted).equal(expected_fullBreak);
+  });
+
+  it("finishPrint()", function () {
+    var ppf = new pp.Formatter({ margin: 20 });
+    ppf.openHvbox(1);
+    ppf.printf("%e", 10.3);
+    ppf.printSpace();
+    ppf.printString("+");
+    ppf.printSpace();
+    ppf.printf("%d", 15);
+    ppf.closeBox();
+    var result = ppf.finishPrint();
+    expect(result).to.equal("1.03e+1 + 15");
+
+    ppf.setMargin(5);
+    ppf.openHvbox(1);
+    ppf.printf("%e", 10.3);
+    ppf.printSpace();
+    ppf.printString("+");
+    ppf.printSpace();
+    ppf.printf("%d", 15);
+    ppf.closeBox();
+    var result = ppf.finishPrint();
+    expect(result).to.equal([
+      "1.03e+1",
+      " +",
+      " 15"
+    ].join("\n"));
+  });
 });
